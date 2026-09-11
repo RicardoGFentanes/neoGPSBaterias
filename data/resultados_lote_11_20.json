@@ -1,0 +1,102 @@
+[
+  {
+    "case_id": 11,
+    "vende_baterias": "SI",
+    "nombre_fachada": "",
+    "marcas": "",
+    "mostrador": "",
+    "evidencia": "Street View bloqueado por un arbol y un puesto de comida en primer plano; fachada no visible. No hay fotos adicionales de Maps. Se confirma por resena de cliente: 'No sirven sus baterias' (2 anos) -- confirma que el negocio vende baterias, aunque cuestiona la calidad. Otras resenas ('Economicas y buenas, recomendable al 100') tambien consistentes con venta de baterias.",
+    "fotos": "streetview_1.jpg",
+    "validado_por": "Claude"
+  },
+  {
+    "case_id": 12,
+    "vende_baterias": "SI",
+    "nombre_fachada": "ACUMULADORES LA PRIMERA",
+    "marcas": "LTH, FULL POWER, ACDELCO, GONHER, AMERICA",
+    "mostrador": "SI",
+    "evidencia": "Street View original (foto estatica) mostraba un local de 'Carnitas' vecino, sin relacion. Foto de Maps (mar 2024, mejor encuadre) confirma letrero 'ACUMULADORES LA PRIMERA', anaquel con baterias LTH/Full Power/ACDelco/Gonher/America, letrero 'COMPRO CASCOS DE BATERIA' y 'GARANTIA directamente con nosotros'. Resenas tambien confirman ('adquiri una excelente bateria para mi Ford Fiesta', 'checo mi bateria y la cambio').",
+    "fotos": "streetview_1.jpg, maps_foto_1.jpg",
+    "validado_por": "Claude"
+  },
+  {
+    "case_id": 13,
+    "vende_baterias": "SI",
+    "nombre_fachada": "ACUMULADORES ROBERTO",
+    "marcas": "LTH",
+    "mostrador": "SI",
+    "evidencia": "Letrero 'ACUMULADORES ROBERTO' visible en el borde derecho de la foto, logo LTH, anaquel con productos visible a traves del aparador.",
+    "fotos": "streetview_1.jpg",
+    "validado_por": "Claude"
+  },
+  {
+    "case_id": 14,
+    "vende_baterias": "SI",
+    "nombre_fachada": "DISTRIBUIDORA DE REFACCIONES EDA",
+    "marcas": "LTH",
+    "mostrador": "NO",
+    "evidencia": "Mural grande de LTH pintado directamente en la fachada del edificio, junto al letrero 'EDA Distribuidora de Refacciones'. No se aprecia mostrador desde la calle pero la evidencia de marca es contundente.",
+    "fotos": "streetview_1.jpg",
+    "validado_por": "Claude"
+  },
+  {
+    "case_id": 15,
+    "vende_baterias": "SI",
+    "nombre_fachada": "CENTRO DE SERVICIO GONHER / NOVA AUTOPARTES",
+    "marcas": "GONHER",
+    "mostrador": "SI",
+    "evidencia": "Esta es la MISMA ubicacion fisica que CASE ID 2 (Nova Autopartes) -- Google Maps tiene dos fichas separadas para el mismo local. Letrero 'CENTRO DE SERVICIO GONHER' y 'NOVA AUTOPARTES', anaquel con productos visible.",
+    "fotos": "streetview_1.jpg",
+    "validado_por": "Claude"
+  },
+  {
+    "case_id": 16,
+    "vende_baterias": "SI",
+    "nombre_fachada": "ACUMULADORES GALECH / Electronica Automotriz",
+    "marcas": "LTH, GONHER, AMERICA, XTREME",
+    "mostrador": "SI",
+    "evidencia": "Street View original mostraba principalmente el letrero de 'Electronica Automotriz' (diagnostico, afinaciones) con un logo LTH pequeno y parcial. Fotos de Maps (propietario, ago 2025) confirman anaquel completo de baterias con marcas LTH, Gonher, America, Xtreme.",
+    "fotos": "streetview_1.jpg, maps_foto_1.jpg, maps_foto_2.jpg",
+    "validado_por": "Claude"
+  },
+  {
+    "case_id": 17,
+    "vende_baterias": "SI",
+    "nombre_fachada": "ACUMULADORES OSO",
+    "marcas": "GONHER, TBS",
+    "mostrador": "SI",
+    "evidencia": "Mural grande 'GONHER', letrero 'GONHER DISTRIBUIDOR', logo 'TBS - Total Battery Solutions', letrero 'BATERIAS', anaqueles a ambos lados de la entrada visiblemente llenos de baterias.",
+    "fotos": "streetview_1.jpg",
+    "validado_por": "Claude"
+  },
+  {
+    "case_id": 18,
+    "vende_baterias": "PENDIENTE",
+    "nombre_fachada": "BATERIAS PARA AUTO ...DURACELL (parcialmente cubierto por grafiti)",
+    "marcas": "DURACELL (probable, parcialmente ilegible)",
+    "mostrador": "NO",
+    "evidencia": "Street View muestra un letrero 'BATERIAS PARA AUTO' con texto adicional parcialmente cubierto por grafiti que podria decir 'DURACELL', cortina metalica cerrada con grafiti extenso (aspecto de abandono). Google Maps marca el negocio como 'Cerrado temporalmente'. PREGUNTA ABIERTA PARA EL EQUIPO: como clasificar negocios con evidencia de fachada pero marcados 'Cerrado temporalmente' -- se dejo en PENDIENTE en vez de asumir SI o NO.",
+    "fotos": "streetview_1.jpg",
+    "validado_por": "Claude"
+  },
+  {
+    "case_id": 19,
+    "vende_baterias": "PENDIENTE",
+    "nombre_fachada": "",
+    "marcas": "",
+    "mostrador": "",
+    "evidencia": "Street View muestra una gasolinera y una agencia de motocicletas en esa esquina, sin relacion aparente con venta de baterias -- posible que el local haya cambiado de giro. Resenas SI confirman venta de baterias en el pasado ('tienen un poco elevados los precios de sus baterias', 'muy buen servicio y precio'). Google Maps marca el negocio como 'Cerrado temporalmente'. Mismo caso abierto que CASE ID 18: evidencia historica de venta de baterias pero negocio actualmente cerrado.",
+    "fotos": "streetview_1.jpg",
+    "validado_por": "Claude"
+  },
+  {
+    "case_id": 20,
+    "vende_baterias": "PENDIENTE",
+    "nombre_fachada": "",
+    "marcas": "",
+    "mostrador": "",
+    "evidencia": "Street View muestra 'TECATE Mini Super Hawai', una tienda de instrumentos musicales y el bar 'MIKEL'S' en ese domicilio -- ninguna relacion con baterias, sugiere que el local cambio de giro/ocupante. Unica resena (hace 8 anos) es generica, no menciona baterias. Google Maps marca el negocio como 'Cerrado temporalmente'. De los 3 'Cerrado temporalmente' de este lote, este es el que tiene MENOS evidencia de haber sido realmente una tienda de baterias en ese domicilio.",
+    "fotos": "streetview_1.jpg",
+    "validado_por": "Claude"
+  }
+]

@@ -26,19 +26,28 @@ Este skill ejecuta el flujo de validación del proyecto `bateriasNeoGPS` sobre u
    - `vende_baterias`: "SI" si hay evidencia razonable (nombre coincide + fachada/mostrador/anuncio de baterías), "NO" si la fachada/negocio claramente no corresponde (ej. es una tienda de otro giro), "PENDIENTE" si la imagen no es concluyente (mala calidad, sin Street View, fachada no visible) — en ese caso anotar en `evidencia` qué falta y considerar revisar el `LINK` de Maps directamente con el navegador antes de dejarlo en PENDIENTE.
    - Si `NOMBRE NEGOCIO` en el Excel no coincide con lo visto en la fachada pero el giro sí es de baterías, priorizar la evidencia visual sobre el nombre registrado.
 
-3. **Cuando la foto de Street View no sea concluyente**, complementar abriendo el `LINK` de Maps del negocio en el navegador (Browser tool) para ver las fotos que haya subido el negocio/usuarios — mismo criterio de evidencia.
+3. **Cuando la foto de Street View (Static API) no sea concluyente** (bloqueada, mal encuadrada, cortina cerrada, fachada equivocada), NO asumir PENDIENTE de inmediato — el "encuadre por defecto" de la Static API no siempre es la mejor imagen disponible. Revisar, en este orden, abriendo el `LINK` de Maps en el navegador (Browser tool):
+   a. La pestaña de fotos **"Street View y 360°"** y **"Del propietario"** en la ficha del negocio — puede haber una captura de Street View en otra fecha/ángulo que sí muestre la fachada (pasó en varios casos: el Street View "actual" no servía pero uno más viejo o con otro heading sí). Si se encuentra una mejor, guardarla como `maps_foto_N.jpg` en la carpeta del negocio (extraer la URL `lh3.googleusercontent.com/gps-cs-s/...` con `javascript_tool` sobre los `<img>` de la pagina, y descargarla con `requests` a mayor resolución — no sirve `computer` "zoom" para esto, no recorta).
+   b. Fotos subidas por el negocio o clientes.
+   c. **El texto de las reseñas** (pestaña "Opiniones" / `get_page_text`) — a veces confirman o niegan la venta de baterías aunque no haya ninguna foto útil (ej. una reseña quejándose de que "no sirven sus baterías" SÍ cuenta como evidencia de que las venden).
+   d. Revisar si el negocio aparece marcado **"Cerrado temporalmente"** o **"Cerrado permanentemente"** en Maps — es una señal que hay que reportar aparte (no asumir SI/NO automáticamente; ver criterio en [[Diccionario de Datos]] de Obsidian, es una decision que debe confirmar el equipo).
+   Solo si ninguna de estas da evidencia, se deja como PENDIENTE.
 
 4. **Escribir resultados**: acumular un JSON con el formato de `scripts/03_update_validation.py` (uno por lote, ej. `data/resultados_lote_11_20.json`) y correr:
    `python scripts/03_update_validation.py data/resultados_lote_11_20.json`
 
 5. **Direcciones limpias**: correr `python scripts/05_reverse_geocode.py <inicio> <fin>` (es idempotente — solo llena `DIRECCION LIMPIA` donde falte). Si no se pasa rango, corre sobre toda la base pendiente.
 
-6. **Regenerar el Excel de revisión**: correr `python scripts/04_generar_excel_revision.py`. Este paso primero sincroniza cualquier `OBSERVACIONES` que el equipo haya escrito en `VALIDACION_NEGOCIOS_BATERIAS.xlsx` hacia el Excel maestro (para no perderlas) y luego regenera ese Excel con todos los negocios validados hasta el momento.
+6. **Regenerar el Excel de revisión**: correr `python scripts/04_generar_excel_revision.py`. Este paso primero sincroniza `OBSERVACIONES` **y correcciones manuales a `VENDE BATERIAS`** que el equipo haya escrito en `VALIDACION_NEGOCIOS_BATERIAS.xlsx` hacia el Excel maestro (para no perderlas — una corrección humana ahí siempre gana), y luego regenera ese Excel con todos los negocios validados hasta el momento.
 
-7. **Registrar el lote en Obsidian**: agregar una entrada en `obsidian/Bitacora/<fecha> - Lote <inicio>-<fin>.md` con un resumen (cuántos SI/NO/PENDIENTE, hallazgos notables, marcas nuevas no listadas en `marcas_bat.xlsx`, observaciones del equipo que cambiaron el criterio). Si es el primer lote (CASE ID 1-10), llenar también `obsidian/Revision Primeros 10.md` para revisar con el usuario antes de escalar al resto de la base.
+7. **Actualizar el aglomerado de fotos**: correr `python scripts/06_aglomerar_fotos.py`. Regenera `fotos_aglomeradas/` con una foto representativa por negocio ya validado (prioriza archivos `ejemplo`/`final` dejados a mano por el equipo). No toca la carpeta `fotos/` por negocio.
+
+8. **Registrar el lote en Obsidian**: agregar una entrada en `obsidian/Bitacora/<fecha> - Lote <inicio>-<fin>.md` con un resumen (cuántos SI/NO/PENDIENTE, hallazgos notables, marcas nuevas no listadas en `marcas_bat.xlsx`, observaciones del equipo que cambiaron el criterio, negocios "Cerrado temporalmente", posibles fichas duplicadas). Crear también `obsidian/Revision <inicio>-<fin>.md` con la tabla de resultados para revisar con el usuario.
 
 ## Notas
 
-- `NOMBRE NEGOCIO` puede venir con encoding corrupto (`�`) en ~77/270 filas; usar `NOMBRE NEGOCIO LIMPIO` (agregada por `01_add_columns.py`) que recupera el nombre real desde el slug del `LINK`.
+- `NOMBRE NEGOCIO` puede venir con encoding corrupto (`�`) en ~77/270 filas; usar `NOMBRE NEGOCIO LIMPIO` (agregada por `01_add_columns.py`) que recupera el nombre real desde el slug del `LINK`. `DIRECCION` viene corrupta en las 270 filas; usar `DIRECCION LIMPIA` (`05_reverse_geocode.py`).
 - No asumir tamaños de lote grandes sin confirmar con el usuario — el proyecto arrancó pidiendo revisar primero los CASE ID 1-10 antes de escalar a los 270.
 - Marcas detectadas deben normalizarse, cuando sea posible, contra la lista de `marcas_bat.xlsx` (columna "Marca correcta") para mantener consistencia de nombres.
+- **Fichas duplicadas**: dos entradas distintas en el Excel pueden ser el mismo negocio físico (mismo LAT/LONG casi exacto, ej. CASE ID 2 y 15). Si se detecta, anotarlo en la evidencia de ambos.
+- **Negocios "Cerrado temporalmente" en Maps**: no asumir automáticamente SI ni NO. Dejar en PENDIENTE con la evidencia histórica disponible y avisar al usuario — es una decisión de negocio, no solo de validación visual.

@@ -1,5 +1,10 @@
 # Diccionario de Datos
 
+## Carpetas de fotos
+
+- **`fotos/`** — una subcarpeta por negocio (`<CASE ID en 3 digitos>_<slug>/`), con todas las fotos de ese negocio (`streetview_1.jpg`, `maps_foto_N.jpg`, o archivos `ejemplo_*` que el equipo deje a mano como referencia de la mejor toma). Esta carpeta **no se reorganiza ni se borra**.
+- **`fotos_aglomeradas/`** — carpeta adicional, generada por `scripts/06_aglomerar_fotos.py`, con **una foto representativa por negocio ya validado**, copiada (no movida) y renombrada como `<CASE ID>_Nombre_Del_Negocio.<ext>` (ej. `12_Baterías_Para_Carro_La_Primera.jpg`). Se regenera cada vez que se corre el script — prioriza archivos `ejemplo`/`final` dejados a mano, luego `streetview_1.jpg`, luego `maps_foto_1.jpg`.
+
 Dos archivos Excel viven en el proyecto:
 
 - **`NEGOCIOS_BATERIAS_ARAÑAS.xlsx`** (hoja `ar_neg`) — base maestra, las 270 filas, con todas las columnas originales de Maps más las columnas que agrega el pipeline. Es la fuente de verdad.
@@ -36,6 +41,18 @@ Dos archivos Excel viven en el proyecto:
 | FECHA VALIDACION | `03_update_validation.py` | Fecha en que se hizo la validación. |
 | VALIDADO POR | `03_update_validation.py` | Quién/qué validó (ej. "Claude"). |
 | OBSERVACIONES | `04_generar_excel_revision.py` | **Columna para el equipo** (ver abajo). |
+
+## Criterio de validación (actualizado con correcciones de Ricardo, lote 1-10 y 11-20)
+
+- **Nombre en fachada + logos/mostrador/anuncio de baterías = SI.** Fachada de otro giro sin ninguna evidencia = NO (ej. CASE ID 6: taller de cerrajería, sin baterías ni anuncios).
+- **Cuando el Street View no muestra la fachada** (bloqueado por árboles/vehículos, ángulo equivocado, cortina cerrada), **antes de conformarse hay que revisar**, en orden:
+  1. La pestaña "Street View y 360°" / "Del propietario" en la ficha de Maps — a veces hay una foto de street view en OTRA fecha/ángulo que sí muestra la fachada (ver CASE ID 7 y 12 — el Street View "por defecto" no era el mejor disponible).
+  2. Fotos subidas por el negocio o clientes en Maps.
+  3. **El texto de las reseñas** — pueden confirmar la venta de baterías aunque no haya ninguna foto útil (ej. CASE ID 11: reseña "No sirven sus baterías"; CASE ID 12 y 19: reseñas mencionando precios/calidad de sus baterías).
+  4. Si after eso no hay ninguna evidencia (ni foto ni reseña), se dejó como PENDIENTE.
+- **"Cerrado temporalmente" en Google Maps**: varios negocios de la base aparecen así. No se asumió automáticamente ni SI ni NO — se dejaron en PENDIENTE con la evidencia disponible, y es una pregunta abierta para Ricardo (ver [[Revision 11-20]]) cómo tratarlos en la base final.
+- **Fichas duplicadas**: Google Maps a veces tiene dos fichas distintas para el mismo local físico (CASE ID 2 y 15 son el mismo negocio). Vale la pena vigilar esto al escalar a los 260 restantes.
+- **Calidad de foto**: cuando se use una foto de Street View/Maps distinta a la que da por defecto la Static API (por estar mejor centrada o ser la única que muestra la fachada), se guarda como `maps_foto_N.jpg` junto al `streetview_1.jpg` original en la carpeta del negocio — no se borra el original.
 
 ## La columna OBSERVACIONES — cómo se usa
 

@@ -4,9 +4,10 @@ Segundo cerebro del proyecto. Abre esta carpeta (`obsidian/`) como vault en Obsi
 
 ## Mapa del proyecto
 
-- [[Diccionario de Datos]] — qué significa cada columna del Excel.
+- [[Diccionario de Datos]] — qué significa cada columna del Excel, criterio de validación actualizado.
 - [[Decisiones]] — bitácora de decisiones tomadas sobre el flujo y el esquema.
-- [[Revision Primeros 10]] — resultado de la revisión de los primeros 10 CASE ID con Ricardo.
+- [[Revision Primeros 10]] — resultado de la revisión de los primeros 10 CASE ID (CASE ID 6 confirmado NO por Ricardo).
+- [[Revision 11-20]] — resultado del segundo lote. Pregunta abierta: negocios "Cerrado temporalmente".
 - `Bitacora/` — una nota por sesión de trabajo.
 
 ## Objetivo del proyecto
@@ -23,6 +24,8 @@ Validar 270 negocios candidatos a vender baterías para automóvil (fuente: `NEG
 - [x] Estructura de repo y git creada
 - [x] Columnas nuevas agregadas al Excel (CASE ID + columnas de validación)
 - [x] API key de Google Maps configurada
-- [x] Primeros 10 CASE ID validados — pendiente revisar con Ricardo (ver [[Revision Primeros 10]])
-- [ ] Pipeline aplicado al resto de la base (260 negocios restantes)
+- [x] Primeros 10 CASE ID validados y revisados con Ricardo (CASE ID 6 = NO confirmado)
+- [x] CASE ID 11-20 validados (7 SI, 3 PENDIENTE por estatus "Cerrado temporalmente" — pregunta abierta)
+- [x] Carpeta `fotos_aglomeradas/` con foto representativa por negocio
+- [ ] Pipeline aplicado al resto de la base (250 negocios restantes)
 - [x] Repo compartido en GitHub (`RicardoGFentanes/neoGPSBaterias`)

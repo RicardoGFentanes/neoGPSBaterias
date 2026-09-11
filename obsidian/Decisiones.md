@@ -2,6 +2,15 @@
 
 Bitácora de decisiones de diseño del pipeline. Cada entrada: fecha, decisión, por qué.
 
+## 2026-09-11 — Correcciones de Ricardo (lote 1-10) + criterio ampliado
+
+- **CASE ID 6 confirmado como NO** por Ricardo (taller de cerrajería, no vende baterías) — corrección aplicada directamente en `VALIDACION_NEGOCIOS_BATERIAS.xlsx` y sincronizada al maestro.
+- **El Excel de revisión ahora es la fuente de correcciones humanas**: además de `OBSERVACIONES`, el campo `VENDE BATERIAS` editado a mano ahí también se sincroniza hacia el maestro (gana sobre lo que haya puesto el pipeline). Ver `scripts/04_generar_excel_revision.py`.
+- **Nueva regla: revisar otras fechas/ángulos de Street View antes de rendirse.** Ricardo mostró con ejemplos (CASE ID 2, 4, 7) que el Street View "por defecto" de la Static API no siempre es la mejor imagen disponible — la pestaña "Street View y 360°" / "Del propietario" en Maps puede tener una captura mejor centrada o en otra fecha que sí confirma la fachada.
+- **Nueva regla: si no hay foto pero sí evidencia en reseñas de texto, cuenta como confirmación.** Aplicado en CASE ID 11 y 12 del lote 11-20.
+- **Nuevo caso abierto (sin resolver aún): negocios "Cerrado temporalmente" en Maps.** 3 del lote 11-20 (18, 19, 20) tienen este estatus con distintos niveles de evidencia histórica de venta de baterías. Se dejaron en PENDIENTE — pregunta abierta para Ricardo, ver [[Revision 11-20]].
+- **Carpeta `fotos_aglomeradas/` agregada** (`scripts/06_aglomerar_fotos.py`): una foto representativa por negocio, copiada y renombrada `<CASE ID>_Nombre_Del_Negocio.<ext>`, sin tocar la estructura de `fotos/` por negocio.
+
 ## 2026-09-11 — Excel de revisión + direcciones limpias
 
 - **Dos Excels, uno maestro y uno de revisión.** `NEGOCIOS_BATERIAS_ARAÑAS.xlsx` sigue siendo la fuente de verdad (270 filas, todas las columnas). `VALIDACION_NEGOCIOS_BATERIAS.xlsx` es un export enfocado (solo negocios ya validados) para que el equipo revise cómodamente y escriba notas, sin exponer las columnas ruidosas del original (HORARIO, BUSQUEDA, PRIORIDAD, etc.).

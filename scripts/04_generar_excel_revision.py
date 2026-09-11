@@ -62,14 +62,19 @@ def ensure_observaciones_column(ws, headers):
     return headers
 
 
-def sync_observaciones_from_review(ws_master, col_master):
-    """Preserva las OBSERVACIONES ya escritas en el Excel de revision existente."""
+# Campos que el equipo puede corregir a mano en el Excel de revision; una
+# correccion humana ahi siempre gana sobre el valor que tenga el maestro.
+HUMAN_EDITABLE_FIELDS = ["OBSERVACIONES", "VENDE BATERIAS"]
+
+
+def sync_human_edits_from_review(ws_master, col_master):
+    """Preserva OBSERVACIONES/VENDE BATERIAS ya corregidas a mano en el Excel de revision."""
     if not REVIEW_PATH.exists():
         return
     wb_review = openpyxl.load_workbook(REVIEW_PATH)
     ws_review = wb_review.active
     review_headers = [c.value for c in ws_review[1]]
-    if "CASE ID" not in review_headers or "OBSERVACIONES" not in review_headers:
+    if "CASE ID" not in review_headers:
         return
     rcol = {h: i + 1 for i, h in enumerate(review_headers)}
 
@@ -82,15 +87,24 @@ def sync_observaciones_from_review(ws_master, col_master):
     synced = 0
     for row in range(2, ws_review.max_row + 1):
         cid = ws_review.cell(row=row, column=rcol["CASE ID"]).value
-        obs = ws_review.cell(row=row, column=rcol["OBSERVACIONES"]).value
-        if cid is None or not obs:
+        if cid is None:
             continue
         master_row = row_by_case_id.get(int(cid))
-        if master_row:
-            ws_master.cell(row=master_row, column=col_master["OBSERVACIONES"], value=obs)
-            synced += 1
+        if not master_row:
+            continue
+        for field in HUMAN_EDITABLE_FIELDS:
+            if field not in rcol:
+                continue
+            new_value = ws_review.cell(row=row, column=rcol[field]).value
+            if new_value is None or (isinstance(new_value, str) and not new_value.strip()):
+                continue
+            old_value = ws_master.cell(row=master_row, column=col_master[field]).value
+            if str(new_value).strip() != str(old_value).strip():
+                ws_master.cell(row=master_row, column=col_master[field], value=new_value)
+                print(f"CASE ID {cid}: {field} actualizado a partir del Excel de revision ({old_value!r} -> {new_value!r})")
+                synced += 1
     if synced:
-        print(f"Se preservaron {synced} observaciones existentes hacia el Excel maestro.")
+        print(f"Se sincronizaron {synced} correcciones humanas hacia el Excel maestro.")
 
 
 def find_photo_paths(case_id, fotos_value):
@@ -113,7 +127,7 @@ def main():
     headers = ensure_observaciones_column(ws_master, headers)
     col_master = {h: i + 1 for i, h in enumerate(headers)}
 
-    sync_observaciones_from_review(ws_master, col_master)
+    sync_human_edits_from_review(ws_master, col_master)
     wb_master.save(MASTER_PATH)
 
     # Releer con data_only para tener valores limpios y columnas consistentes
