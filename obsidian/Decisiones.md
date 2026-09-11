@@ -2,11 +2,14 @@
 
 Bitácora de decisiones de diseño del pipeline. Cada entrada: fecha, decisión, por qué.
 
-## 2026-09-11 — Resolución de "Cerrado temporalmente" + regla de sincronización más clara
+## 2026-09-11 — Regla de precisión del PIN + resolución final 18/19/20
 
+- **Regla clave de precisión (aplica a toda la base, "no inventar nada"): si el Street View en las coordenadas exactas del negocio NO muestra el nombre registrado en la fachada, se clasifica NO — aunque haya otros negocios de baterías cerca.** No se debe acreditar evidencia de un negocio DISTINTO (aunque esté a unos metros) a la ficha que se está validando; el pin de Maps puede estar mal puesto, pero eso no convierte automáticamente al vecino en "el mismo negocio". Ricardo aplicó esto en CASE ID 20 (NO, a pesar de que cerca hay un negocio real de baterías, "Acumuladores LEO" — ese es un hallazgo aparte, no evidencia para CASE ID 20).
+- **CASE ID 18 → SI** (revertido de PENDIENTE): Ricardo confirmó que sí se alcanza a apreciar la marca de batería en el letrero pese al grafiti — sí cuenta como evidencia suficiente.
+- **CASE ID 20 → NO** (revertido de PENDIENTE): no cumple el nombre en el pin exacto (ver regla de arriba).
 - **"Cerrado temporalmente" en Maps NO descalifica automáticamente.** Ricardo aprobó CASE ID 19 como SI a pesar de ese estatus, porque la evidencia (reseñas) cumplía los requisitos del equipo. Regla final: evaluar la evidencia de que el negocio vendía/vende baterías igual que cualquier otro caso; el estatus "Cerrado temporalmente" se anota pero no decide el veredicto por sí solo.
-- **PENDIENTE es un estado final válido para "revisión en conjunto con el equipo"**, no solo "todavía no se revisó". CASE ID 18 se queda así a propósito (evidencia de foto insuficiente, decisión de Ricardo).
-- **Nuevo hallazgo por seguir**: para CASE ID 20, Ricardo detectó un negocio de baterías en la esquina de enfrente. Se identificó como "Acumuladores LEO" (Av. Pantitlán 155, ~30m) — posible reubicación/cambio de nombre de la franquicia Duracell original, o negocio nuevo no listado. Pendiente decidir si se agrega como candidato nuevo a la base.
+- **PENDIENTE sigue siendo un estado final válido** para "revisión en conjunto con el equipo" cuando la evidencia es genuinamente insuficiente para decidir con confianza (no se debe forzar SI/NO sin evidencia real, ver instrucción explícita de Ricardo de "no inventar nada").
+- **"Acumuladores LEO"** (Av. Pantitlán 155, cerca de CASE ID 20) queda documentado como un negocio real que vende baterías, pero NO se agrega a la base — Ricardo no lo pidió y el caso 20 se resolvió como NO por su cuenta. Si se quiere agregar como candidato nuevo en el futuro, debe pedirse explícitamente.
 - **Regla de sincronización más estricta (para evitar el gotcha de CASE ID 13)**: si necesitas cambiar `VENDE BATERIAS` / `OBSERVACIONES` / `FOTO PRINCIPAL` fuera de una corrida fresca de `04_generar_excel_revision.py` (por ejemplo, aplicando una decisión que Ricardo ya escribió en el Excel de revisión, directamente al maestro), **hay que escribir el mismo valor en AMBOS archivos** antes de volver a correr `04` — si no, el sync revierte el cambio con el valor viejo. Volvió a pasar con CASE ID 19 el 2026-09-11 (correcto ahora). Campos que NO son humanos-editables (`EVIDENCIA`, `BATERIAS VISIBLES EN FOTOS MAPS`, etc.) no tienen este problema — se pueden editar directo en el maestro sin riesgo.
 
 ## 2026-09-11 — Calidad de foto: zoom + contexto, y columna FOTO PRINCIPAL

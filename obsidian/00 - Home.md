@@ -25,7 +25,7 @@ Validar 270 negocios candidatos a vender baterías para automóvil (fuente: `NEG
 - [x] Columnas nuevas agregadas al Excel (CASE ID + columnas de validación)
 - [x] API key de Google Maps configurada
 - [x] Primeros 10 CASE ID validados y revisados con Ricardo (CASE ID 6 = NO confirmado)
-- [x] CASE ID 1-20 validados y revisados con Ricardo: 17 SI, 1 NO, 2 PENDIENTE (revisión en persona con el equipo)
+- [x] CASE ID 1-20 validados y revisados con Ricardo: 18 SI, 2 NO, 0 PENDIENTE
 - [x] Carpeta `fotos_aglomeradas/` con foto representativa por negocio (columna `FOTO PRINCIPAL` explícita)
 - [x] Columna `BATERIAS VISIBLES EN FOTOS MAPS` agregada
 - [ ] Decidir si "Acumuladores LEO" (posible negocio nuevo cerca de CASE ID 20) se agrega a la base

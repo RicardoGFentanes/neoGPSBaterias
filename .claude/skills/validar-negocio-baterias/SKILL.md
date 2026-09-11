@@ -7,6 +7,14 @@ description: Valida un rango de CASE ID de NEGOCIOS_BATERIAS_ARAÑAS.xlsx contra
 
 Este skill ejecuta el flujo de validación del proyecto `bateriasNeoGPS` sobre un rango de `CASE ID` de `NEGOCIOS_BATERIAS_ARAÑAS.xlsx` (hoja `ar_neg`).
 
+## Regla de oro: no inventar nada
+
+Ricardo lo pidió explícitamente (2026-09-11): **no inventar información**. Si no se puede confirmar algo con evidencia real (foto legible, reseña, texto de Maps), no se asume ni se completa por lógica/probabilidad. Cuando falte evidencia suficiente, se deja `PENDIENTE` y se anota exactamente qué falta — nunca se fuerza un SI o un NO "por parecido" o "porque seguramente es así".
+
+## Regla del PIN exacto (crítica, aplica a los 270)
+
+**Si el Street View en las coordenadas exactas (LAT/LONG) del negocio NO muestra el nombre registrado en la fachada, se clasifica NO** — aunque cerca (incluso a unos metros) haya otro negocio que sí venda baterías. No se le acredita a esta ficha la evidencia de un negocio distinto; el pin de Maps puede estar mal puesto, pero eso no convierte al vecino en "el mismo negocio". Un negocio de baterías real encontrado cerca pero con nombre distinto se documenta como hallazgo aparte (no se agrega a la base sin que el usuario lo pida explícitamente). Ver CASE ID 20 en [[Decisiones]] para el caso que estableció esta regla.
+
 ## Precondiciones
 
 1. `.env` debe existir en la raíz con `GOOGLE_MAPS_API_KEY` configurada (ver `.env.example`). Necesita Street View Static + Metadata API, y Geocoding API (para direcciones limpias).
@@ -32,8 +40,8 @@ Este skill ejecuta el flujo de validación del proyecto `bateriasNeoGPS` sobre u
    a. La pestaña de fotos **"Street View y 360°"** y **"Del propietario"** en la ficha del negocio — puede haber una captura de Street View en otra fecha/ángulo que sí muestre la fachada (pasó en varios casos: el Street View "actual" no servía pero uno más viejo o con otro heading sí). Si se encuentra una mejor, guardarla como `maps_foto_N.jpg` en la carpeta del negocio (extraer la URL `lh3.googleusercontent.com/gps-cs-s/...` con `javascript_tool` sobre los `<img>` de la pagina, y descargarla con `requests` a mayor resolución — no sirve `computer` "zoom" para esto, no recorta).
    b. Fotos subidas por el negocio o clientes.
    c. **El texto de las reseñas** (pestaña "Opiniones" / `get_page_text`) — a veces confirman o niegan la venta de baterías aunque no haya ninguna foto útil (ej. una reseña quejándose de que "no sirven sus baterías" SÍ cuenta como evidencia de que las venden).
-   d. Revisar si el negocio aparece marcado **"Cerrado temporalmente"** o **"Cerrado permanentemente"** en Maps — anotarlo en la evidencia, pero **no descalifica automáticamente** (Ricardo confirmó esto con CASE ID 19: se aprueba como SI si la evidencia de venta de baterías es suficiente, aunque Maps lo marque cerrado). Evaluar la evidencia igual que en cualquier otro caso.
-   Solo si ninguna de estas da evidencia suficiente, se deja como PENDIENTE — y PENDIENTE puede ser un estado FINAL ("pasa a revisión en persona con el equipo"), no solo "todavía no revisado" (ver CASE ID 18).
+   d. Revisar si el negocio aparece marcado **"Cerrado temporalmente"** o **"Cerrado permanentemente"** en Maps — anotarlo en la evidencia, pero **no descalifica automáticamente**. Evaluar la evidencia igual que en cualquier otro caso.
+   Solo si ninguna de estas da evidencia suficiente, se deja como PENDIENTE — y PENDIENTE puede ser un estado FINAL, no solo "todavía no revisado". **Recuerda la regla del PIN exacto de arriba**: nombre no coincide en el sitio exacto = NO, no importa si hay otro negocio de baterías cerca.
 
 4. **Escribir resultados**: acumular un JSON con el formato de `scripts/03_update_validation.py` (uno por lote, ej. `data/resultados_lote_11_20.json`) y correr:
    `python scripts/03_update_validation.py data/resultados_lote_11_20.json`
@@ -53,5 +61,5 @@ Este skill ejecuta el flujo de validación del proyecto `bateriasNeoGPS` sobre u
 - No asumir tamaños de lote grandes sin confirmar con el usuario — el proyecto arrancó pidiendo revisar primero los CASE ID 1-10 antes de escalar a los 270.
 - `marcas_bat.xlsx` es para otro proceso interno de Ricardo (confirmado 2026-09-11) — **no se usa en este pipeline**, ni para normalizar ni para excluir marcas.
 - **Fichas duplicadas**: dos entradas distintas en el Excel pueden ser el mismo negocio físico (mismo LAT/LONG casi exacto, ej. CASE ID 2 y 15). Si se detecta, anotarlo en la evidencia de ambos.
-- **Negocios "Cerrado temporalmente" en Maps**: no asumir automáticamente SI ni NO. Dejar en PENDIENTE con la evidencia histórica disponible y avisar al usuario — es una decisión de negocio, no solo de validación visual.
+- **Negocios "Cerrado temporalmente" en Maps**: NO descalifica automáticamente (resuelto 2026-09-11). Evaluar la evidencia de venta de baterías igual que cualquier otro caso; anotar el estatus en la evidencia pero decidir SI/NO/PENDIENTE según la evidencia real, no según el estatus de apertura.
 - **Descargar fotos de Maps a resolución completa**: los `<img>` en la galería de Maps son `gps-cs-s`/`googleusercontent.com` — se puede sacar el src con `javascript_tool` y pedirla en mayor tamaño cambiando el sufijo `=wNN-hNN-...` por algo como `=w1200-h1200-k-no` antes de descargarla con `requests`. El `computer` "zoom" del navegador NO sirve para esto (no recorta imagenes, solo re-screenshotea).
