@@ -4,11 +4,17 @@ Base de negocios (270 registros) a validar como vendedores reales de baterías p
 
 ## Archivos
 
-- `NEGOCIOS_BATERIAS_ARAÑAS.xlsx` — base principal de negocios a validar (hoja `ar_neg`).
+- `NEGOCIOS_BATERIAS_ARAÑAS.xlsx` — base maestra de negocios a validar (hoja `ar_neg`), fuente de verdad de las 270 filas.
+- `VALIDACION_NEGOCIOS_BATERIAS.xlsx` — Excel de revisión (solo negocios ya validados), con columna `OBSERVACIONES` para que el equipo escriba notas que guían la validación de los siguientes lotes. Se regenera con `scripts/04_generar_excel_revision.py`.
 - `marcas_bat.xlsx` — catálogo de marcas de baterías (correctas, clonadas, proveedor, inventario) usado como referencia al anotar marcas detectadas.
 - `fotos/` — fotos descargadas de Street View / Maps, organizadas por `CASE ID`.
-- `scripts/` — scripts de validación (descarga de fotos, geocodificación, actualización del Excel).
-- `data/` — datos intermedios/export.
+- `scripts/` — scripts de validación:
+  - `01_add_columns.py` — agrega CASE ID y columnas de validación al Excel maestro.
+  - `02_download_streetview.py <inicio> <fin>` — descarga fotos de Street View.
+  - `03_update_validation.py <resultados.json>` — escribe resultados de validación al Excel maestro.
+  - `04_generar_excel_revision.py` — sincroniza OBSERVACIONES y regenera el Excel de revisión.
+  - `05_reverse_geocode.py [inicio fin]` — reconstruye direcciones limpias vía reverse geocoding.
+- `data/` — datos intermedios/export (resultados de validación por lote, en JSON).
 - `obsidian/` — vault de Obsidian (segundo cerebro del proyecto): bitácora, hallazgos, decisiones.
 - `.claude/skills/` — skills de Claude Code para repetir el flujo de validación.
 

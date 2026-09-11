@@ -9,9 +9,10 @@ Este skill ejecuta el flujo de validación del proyecto `bateriasNeoGPS` sobre u
 
 ## Precondiciones
 
-1. `.env` debe existir en la raíz con `GOOGLE_MAPS_API_KEY` configurada (ver `.env.example`).
+1. `.env` debe existir en la raíz con `GOOGLE_MAPS_API_KEY` configurada (ver `.env.example`). Necesita Street View Static + Metadata API, y Geocoding API (para direcciones limpias).
 2. El Excel debe tener ya las columnas `CASE ID` y de validación (`scripts/01_add_columns.py`). Si no existen, córrelo primero (falla si el archivo está abierto en Excel — pide al usuario que lo cierre).
-3. El Excel **no debe estar abierto en Excel** al momento de escribir resultados (`03_update_validation.py` fallará con permiso denegado si lo está).
+3. El Excel **no debe estar abierto en Excel** al momento de escribir resultados (`03_update_validation.py`, `04_generar_excel_revision.py` y `05_reverse_geocode.py` fallarán con permiso denegado si lo está).
+4. **Antes de validar un lote nuevo, revisar si hay `OBSERVACIONES` escritas por el equipo** en `VALIDACION_NEGOCIOS_BATERIAS.xlsx` (o ya sincronizadas en la columna `OBSERVACIONES` del Excel maestro) — pueden corregir el criterio para casos similares. Ver [[Diccionario de Datos]] en Obsidian.
 
 ## Pasos por lote (ej. CASE ID 1 a 10)
 
@@ -27,10 +28,14 @@ Este skill ejecuta el flujo de validación del proyecto `bateriasNeoGPS` sobre u
 
 3. **Cuando la foto de Street View no sea concluyente**, complementar abriendo el `LINK` de Maps del negocio en el navegador (Browser tool) para ver las fotos que haya subido el negocio/usuarios — mismo criterio de evidencia.
 
-4. **Escribir resultados**: acumular un JSON con el formato de `scripts/03_update_validation.py` (uno por lote, ej. `data/resultados_lote_1_10.json`) y correr:
-   `python scripts/03_update_validation.py data/resultados_lote_1_10.json`
+4. **Escribir resultados**: acumular un JSON con el formato de `scripts/03_update_validation.py` (uno por lote, ej. `data/resultados_lote_11_20.json`) y correr:
+   `python scripts/03_update_validation.py data/resultados_lote_11_20.json`
 
-5. **Registrar el lote en Obsidian**: agregar una entrada en `obsidian/Bitacora/<fecha> - Lote <inicio>-<fin>.md` con un resumen (cuántos SI/NO/PENDIENTE, hallazgos notables, marcas nuevas no listadas en `marcas_bat.xlsx`). Si es el primer lote (CASE ID 1-10), llenar también `obsidian/Revision Primeros 10.md` para revisar con el usuario antes de escalar al resto de la base.
+5. **Direcciones limpias**: correr `python scripts/05_reverse_geocode.py <inicio> <fin>` (es idempotente — solo llena `DIRECCION LIMPIA` donde falte). Si no se pasa rango, corre sobre toda la base pendiente.
+
+6. **Regenerar el Excel de revisión**: correr `python scripts/04_generar_excel_revision.py`. Este paso primero sincroniza cualquier `OBSERVACIONES` que el equipo haya escrito en `VALIDACION_NEGOCIOS_BATERIAS.xlsx` hacia el Excel maestro (para no perderlas) y luego regenera ese Excel con todos los negocios validados hasta el momento.
+
+7. **Registrar el lote en Obsidian**: agregar una entrada en `obsidian/Bitacora/<fecha> - Lote <inicio>-<fin>.md` con un resumen (cuántos SI/NO/PENDIENTE, hallazgos notables, marcas nuevas no listadas en `marcas_bat.xlsx`, observaciones del equipo que cambiaron el criterio). Si es el primer lote (CASE ID 1-10), llenar también `obsidian/Revision Primeros 10.md` para revisar con el usuario antes de escalar al resto de la base.
 
 ## Notas
 
