@@ -2,6 +2,13 @@
 
 Bitácora de decisiones de diseño del pipeline. Cada entrada: fecha, decisión, por qué.
 
+## 2026-09-11 — La foto principal debe probar visualmente la venta de baterías
+
+- **Ricardo pidió que la foto del aglomerado siempre pruebe visualmente que el negocio vende baterías** — señaló específicamente que `19_Venta_De_Baterias_De_Carros.jpg` (antes: Street View de una gasolinera) no servía como prueba.
+- **Causa raíz**: en varios casos solo se había revisado la PRIMERA miniatura de la galería de fotos de Maps, sin abrir "Ver fotos"/"Ver más fotos" para revisar el resto. Al revisar la galería completa se encontraron fotos mucho mejores para CASE ID 5, 10, 19 (anaqueles con baterías, marcas legibles) que ya reemplazaron a las anteriores en `FOTO PRINCIPAL`.
+- **Cuando genuinamente no existe ninguna foto que pruebe la venta** (CASE ID 11 y 18 — solo hay 1 foto de Street View en toda la ficha de Maps, sin galería adicional), se documentó explícitamente como `LIMITACION` en `EVIDENCIA` en vez de forzar o simular una prueba visual que no existe. El veredicto SI en esos dos casos sigue apoyado en otra evidencia (reseñas de texto para 11, letrero parcialmente legible para 18), no en la foto.
+- Regla agregada a la skill: revisar SIEMPRE la galería completa de Maps antes de conformarse con la miniatura por defecto.
+
 ## 2026-09-11 — Regla de precisión del PIN + resolución final 18/19/20
 
 - **Regla clave de precisión (aplica a toda la base, "no inventar nada"): si el Street View en las coordenadas exactas del negocio NO muestra el nombre registrado en la fachada, se clasifica NO — aunque haya otros negocios de baterías cerca.** No se debe acreditar evidencia de un negocio DISTINTO (aunque esté a unos metros) a la ficha que se está validando; el pin de Maps puede estar mal puesto, pero eso no convierte automáticamente al vecino en "el mismo negocio". Ricardo aplicó esto en CASE ID 20 (NO, a pesar de que cerca hay un negocio real de baterías, "Acumuladores LEO" — ese es un hallazgo aparte, no evidencia para CASE ID 20).
