@@ -6,7 +6,7 @@ Base de negocios (270 registros) a validar como vendedores reales de baterías p
 
 - `NEGOCIOS_BATERIAS_ARAÑAS.xlsx` — base maestra de negocios a validar (hoja `ar_neg`), fuente de verdad de las 270 filas.
 - `VALIDACION_NEGOCIOS_BATERIAS.xlsx` — Excel de revisión (solo negocios ya validados), con columna `OBSERVACIONES` para que el equipo escriba notas que guían la validación de los siguientes lotes. Se regenera con `scripts/04_generar_excel_revision.py`.
-- `marcas_bat.xlsx` — catálogo de marcas de baterías (correctas, clonadas, proveedor, inventario) usado como referencia al anotar marcas detectadas.
+- `marcas_bat.xlsx` — archivo de otro proceso interno (no relacionado con este pipeline de validación; no se usa aquí).
 - `fotos/` — fotos descargadas de Street View / Maps, organizadas por `CASE ID` (una subcarpeta por negocio).
 - `fotos_aglomeradas/` — una foto representativa por negocio ya validado, renombrada `<CASE ID>_Nombre_Del_Negocio.<ext>`. Generada por `scripts/06_aglomerar_fotos.py`, no reemplaza a `fotos/`.
 - `scripts/` — scripts de validación:

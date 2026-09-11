@@ -12,6 +12,10 @@ Formato esperado del JSON (lista de objetos):
     "nombre_fachada": "Acumuladores Neza",
     "marcas": "LTH, BOSCH",
     "mostrador": "SI",                    # SI / NO
+    "baterias_fotos_maps": "2 LTH negras + 1 Full Power roja apiladas en anaquel",
+                                            # que baterias (marca/cantidad/tipo) se
+                                            # aprecian en las FOTOS DE MAPS especificamente
+                                            # (distinto de "mostrador", que es SI/NO general)
     "evidencia": "Mostrador con ~8 baterias visibles, logo LTH en fachada",
     "fotos": "streetview_1.jpg",
     "foto_principal": "streetview_1.jpg",  # opcional: cual de las fotos en "fotos"
@@ -41,6 +45,7 @@ FIELD_TO_COLUMN = {
     "nombre_fachada": "NOMBRE FACHADA DETECTADO",
     "marcas": "MARCAS LOGOS DETECTADOS",
     "mostrador": "BATERIAS EN MOSTRADOR",
+    "baterias_fotos_maps": "BATERIAS VISIBLES EN FOTOS MAPS",
     "evidencia": "EVIDENCIA",
     "fotos": "FOTOS ARCHIVO",
     "foto_principal": "FOTO PRINCIPAL",

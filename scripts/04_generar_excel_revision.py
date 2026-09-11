@@ -38,6 +38,7 @@ REVIEW_COLUMNS = [
     "NOMBRE FACHADA DETECTADO",
     "MARCAS LOGOS DETECTADOS",
     "BATERIAS EN MOSTRADOR",
+    "BATERIAS VISIBLES EN FOTOS MAPS",
     "EVIDENCIA",
     "FOTOS ARCHIVO",
     "FOTO PRINCIPAL",
@@ -49,9 +50,10 @@ COLUMN_WIDTHS = {
     "CASE ID": 8, "NOMBRE NEGOCIO": 28, "DIRECCION": 36, "LAT": 11, "LONG": 11,
     "LINK": 16, "VENDE BATERIAS": 14, "NOMBRE FACHADA DETECTADO": 28,
     "MARCAS LOGOS DETECTADOS": 22, "BATERIAS EN MOSTRADOR": 16,
+    "BATERIAS VISIBLES EN FOTOS MAPS": 40,
     "EVIDENCIA": 50, "FOTOS ARCHIVO": 34, "FOTO PRINCIPAL": 20, "OBSERVACIONES": 40, "FECHA VALIDACION": 14,
 }
-WRAP_COLUMNS = {"EVIDENCIA", "OBSERVACIONES", "DIRECCION", "FOTOS ARCHIVO"}
+WRAP_COLUMNS = {"EVIDENCIA", "OBSERVACIONES", "DIRECCION", "FOTOS ARCHIVO", "BATERIAS VISIBLES EN FOTOS MAPS"}
 
 
 def ensure_observaciones_column(ws, headers):
@@ -172,6 +174,7 @@ def main():
             "NOMBRE FACHADA DETECTADO": ws_master.cell(row=row, column=col_master["NOMBRE FACHADA DETECTADO"]).value,
             "MARCAS LOGOS DETECTADOS": ws_master.cell(row=row, column=col_master["MARCAS LOGOS DETECTADOS"]).value,
             "BATERIAS EN MOSTRADOR": ws_master.cell(row=row, column=col_master["BATERIAS EN MOSTRADOR"]).value,
+            "BATERIAS VISIBLES EN FOTOS MAPS": ws_master.cell(row=row, column=col_master["BATERIAS VISIBLES EN FOTOS MAPS"]).value if "BATERIAS VISIBLES EN FOTOS MAPS" in col_master else None,
             "EVIDENCIA": evidencia,
             "FOTOS ARCHIVO": find_photo_paths(case_id, fotos_raw),
             "FOTO PRINCIPAL": ws_master.cell(row=row, column=col_master["FOTO PRINCIPAL"]).value if "FOTO PRINCIPAL" in col_master else None,

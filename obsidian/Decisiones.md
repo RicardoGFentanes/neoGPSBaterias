@@ -2,6 +2,13 @@
 
 Bitácora de decisiones de diseño del pipeline. Cada entrada: fecha, decisión, por qué.
 
+## 2026-09-11 — Resolución de "Cerrado temporalmente" + regla de sincronización más clara
+
+- **"Cerrado temporalmente" en Maps NO descalifica automáticamente.** Ricardo aprobó CASE ID 19 como SI a pesar de ese estatus, porque la evidencia (reseñas) cumplía los requisitos del equipo. Regla final: evaluar la evidencia de que el negocio vendía/vende baterías igual que cualquier otro caso; el estatus "Cerrado temporalmente" se anota pero no decide el veredicto por sí solo.
+- **PENDIENTE es un estado final válido para "revisión en conjunto con el equipo"**, no solo "todavía no se revisó". CASE ID 18 se queda así a propósito (evidencia de foto insuficiente, decisión de Ricardo).
+- **Nuevo hallazgo por seguir**: para CASE ID 20, Ricardo detectó un negocio de baterías en la esquina de enfrente. Se identificó como "Acumuladores LEO" (Av. Pantitlán 155, ~30m) — posible reubicación/cambio de nombre de la franquicia Duracell original, o negocio nuevo no listado. Pendiente decidir si se agrega como candidato nuevo a la base.
+- **Regla de sincronización más estricta (para evitar el gotcha de CASE ID 13)**: si necesitas cambiar `VENDE BATERIAS` / `OBSERVACIONES` / `FOTO PRINCIPAL` fuera de una corrida fresca de `04_generar_excel_revision.py` (por ejemplo, aplicando una decisión que Ricardo ya escribió en el Excel de revisión, directamente al maestro), **hay que escribir el mismo valor en AMBOS archivos** antes de volver a correr `04` — si no, el sync revierte el cambio con el valor viejo. Volvió a pasar con CASE ID 19 el 2026-09-11 (correcto ahora). Campos que NO son humanos-editables (`EVIDENCIA`, `BATERIAS VISIBLES EN FOTOS MAPS`, etc.) no tienen este problema — se pueden editar directo en el maestro sin riesgo.
+
 ## 2026-09-11 — Calidad de foto: zoom + contexto, y columna FOTO PRINCIPAL
 
 - **Ricardo pidió asegurar que en las fotos de Street View se noten las baterías, los logos y el nombre del local.** `scripts/02_download_streetview.py` ahora descarga DOS tomas por negocio: `streetview_1.jpg` (fov=50, zoom) y `streetview_2.jpg` (fov=90, contexto).

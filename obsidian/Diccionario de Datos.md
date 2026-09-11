@@ -18,6 +18,7 @@ Dos archivos Excel viven en el proyecto:
 
 - **`NEGOCIOS_BATERIAS_ARAÑAS.xlsx`** (hoja `ar_neg`) — base maestra, las 270 filas, con todas las columnas originales de Maps más las columnas que agrega el pipeline. Es la fuente de verdad.
 - **`VALIDACION_NEGOCIOS_BATERIAS.xlsx`** — Excel de revisión, generado/regenerado por `scripts/04_generar_excel_revision.py`. Solo incluye los negocios ya procesados por el pipeline (no los 270 desde el inicio), con columnas más enfocadas y **la columna OBSERVACIONES para que el equipo escriba notas** — ver más abajo.
+- **`marcas_bat.xlsx`** — **NO se usa en el pipeline de validación.** Ricardo confirmó (2026-09-11) que es para otro proceso interno suyo (no relacionado con detectar marcas en fotos). No usarlo para normalizar ni para excluir nada de `MARCAS LOGOS DETECTADOS`.
 
 ## Columnas originales (Maps)
 
@@ -43,8 +44,9 @@ Dos archivos Excel viven en el proyecto:
 | DIRECCION LIMPIA | `05_reverse_geocode.py` | Dirección reconstruida vía reverse geocoding (Geocoding API) usando LAT/LONG. **Nota**: puede diferir ligeramente de la dirección original (Google devuelve la dirección más cercana indexada a esas coordenadas, no necesariamente el texto exacto original), pero siempre es correcta como ubicación. |
 | VENDE BATERIAS | `01_add_columns.py` / `03_update_validation.py` | Veredicto final: SI / NO / PENDIENTE. |
 | NOMBRE FACHADA DETECTADO | `03_update_validation.py` | Nombre leído directamente de la fachada en la foto (Street View o Maps). |
-| MARCAS LOGOS DETECTADOS | `03_update_validation.py` | Marcas de batería identificadas en logos de fachada o en el mostrador (NO cuenta lo visto solo en anuncios/publicidad). Se normaliza contra `marcas_bat.xlsx`. |
+| MARCAS LOGOS DETECTADOS | `03_update_validation.py` | Marcas de batería identificadas en logos de fachada o en el mostrador (NO cuenta lo visto solo en anuncios/publicidad). Se anotan libremente, tal como se leen — `marcas_bat.xlsx` NO se usa para esto (ver nota arriba). |
 | BATERIAS EN MOSTRADOR | `03_update_validation.py` | SI/NO — si se ve un mostrador/exhibidor con baterías de auto físicas. |
+| BATERIAS VISIBLES EN FOTOS MAPS | `03_update_validation.py` | Texto descriptivo: qué baterías se aprecian específicamente en las FOTOS DE MAPS (marca/cantidad/tipo si se distingue). Pedido explícito de Ricardo (2026-09-11) — distinto de BATERIAS EN MOSTRADOR (que es solo SI/NO y puede venir de Street View). |
 | EVIDENCIA | `03_update_validation.py` | Texto libre con el razonamiento de Claude: qué se vio exactamente y por qué se concluyó el veredicto. |
 | FOTOS ARCHIVO | `03_update_validation.py` | Nombres de archivo de las fotos descargadas para este CASE ID, en `fotos/<CASE ID>_<slug>/`. |
 | FOTO PRINCIPAL | `03_update_validation.py` | Cuál de las fotos en FOTOS ARCHIVO es la mejor evidencia (nombre/logos/baterías notorios) — la usa `06_aglomerar_fotos.py` para elegir qué copiar al aglomerado. Editable a mano en el Excel de revisión (ver [[Decisiones]] sobre el orden de sincronización). |

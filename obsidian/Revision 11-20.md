@@ -11,25 +11,25 @@ Segundo lote, ya con las correcciones de Ricardo sobre el lote 1-10 aplicadas (v
 | 15 | Centro de Servicio Autorizado Gonher | SI | **Misma ubicación física que CASE ID 2** (Nova Autopartes) — ficha duplicada en Maps. |
 | 16 | Acumuladores "Galech" | SI | Street View solo mostraba "Electrónica Automotriz" con logo LTH parcial. Fotos de Maps confirman anaquel completo (LTH/Gonher/America/Xtreme). |
 | 17 | Acumuladores Oso | SI | Mural GONHER + TBS "Total Battery Solutions", mostrador muy visible. |
-| 18 | Battery Club Duracell | **PENDIENTE** | Letrero "BATERIAS PARA AUTO" visible pero grafiteado; negocio marcado "Cerrado temporalmente" en Maps. |
-| 19 | Venta De Baterías De Carros | **PENDIENTE** | Reseñas confirman venta de baterías, pero Street View ya no muestra el negocio en ese domicilio (ahora hay gasolinera/moto shop) y Maps lo marca "Cerrado temporalmente". |
-| 20 | Franquicia Duracell "Neza" | **PENDIENTE** | Sin evidencia visual (el domicilio ahora tiene otros negocios: Tecate, tienda de música, bar Mikel's). Maps lo marca "Cerrado temporalmente". Es el caso con menos evidencia de los 3 "cerrado temporalmente". |
+| 18 | Battery Club Duracell | **PENDIENTE** (decisión de Ricardo: revisión en conjunto con el equipo) | Letrero "BATERIAS PARA AUTO" visible pero grafiteado; negocio marcado "Cerrado temporalmente" en Maps. La foto no da evidencia suficiente para decidir solo. |
+| 19 | Venta De Baterías De Carros | **SI** (aprobado por Ricardo) | Reseñas confirman venta de baterías. Maps lo marca "Cerrado temporalmente", pero Ricardo confirmó que ese estatus no descalifica si la evidencia es suficiente. |
+| 20 | Franquicia Duracell "Neza" | **PENDIENTE** (decisión de Ricardo: revisión en conjunto con el equipo) | Sin evidencia visual en ese domicilio. Ricardo detectó un negocio de baterías en la esquina de enfrente — ver hallazgo "Acumuladores LEO" abajo. |
 
-## Resultado: 7 SI, 0 NO, 3 PENDIENTE
+## Resultado final: 8 SI, 1 NO, 2 PENDIENTE
 
-## Pregunta abierta para Ricardo — negocios "Cerrado temporalmente"
+## Resuelto — negocios "Cerrado temporalmente"
 
-3 de los 10 negocios de este lote aparecen como **"Cerrado temporalmente"** en Google Maps (18, 19 y 20), con distintos niveles de evidencia de que alguna vez vendieron baterías:
-- **18**: hay letrero de baterías visible (aunque grafiteado) — evidencia fuerte de que el negocio existió.
-- **19**: hay reseñas de clientes confirmando venta de baterías, pero el domicilio ya tiene otro giro visualmente.
-- **20**: casi no hay evidencia — el domicilio actual tiene negocios sin ninguna relación.
+Ricardo confirmó la regla general: **"Cerrado temporalmente" en Maps NO descalifica automáticamente** un negocio. Se evalúa la evidencia de venta de baterías igual que cualquier otro caso (reseñas, fotos, letreros); el estatus se anota pero no decide por sí solo. Por eso CASE ID 19 se aprobó como SI. CASE ID 18 y 20 quedan en PENDIENTE porque Ricardo decidió que ameritan revisión en persona con el equipo (evidencia insuficiente en 18; posible cambio de ubicación en 20), no porque estén "cerrados".
 
-**¿Cómo quieres que se clasifiquen estos casos?** Opciones que veo:
-1. Tratarlos como NO (ya que no son un lead vigente para el negocio, aunque hayan vendido baterías antes).
-2. Dejarlos como PENDIENTE/una categoría aparte (ej. "CERRADO") para no perder el historial pero separarlos de los negocios activos.
-3. Tratarlos como SI si hay evidencia de que sí vendían baterías, y agregar una columna aparte para el estatus "abierto/cerrado".
+## Hallazgo nuevo — "Acumuladores LEO" (posible relacionado con CASE ID 20)
 
-Se dejaron en PENDIENTE mientras se decide, para no asumir.
+Ricardo señaló que en la esquina de enfrente de CASE ID 20 (Av. Pantitlán 153) hay otro negocio que vende baterías. Se investigó y se encontró **"Acumuladores LEO"** — Av. Pantitlán 155 (~30 metros), fotos de Maps muestran claramente letrero "ACUMULADORES LEO", logo LTH, y anaqueles con baterías; parece una inauguración tipo carpa de mayo 2025. [Ver en Maps](https://www.google.com/maps/place/Acumuladores+LEO/@19.4049156,-99.0408877).
+
+Posibles explicaciones:
+- Es la misma franquicia Duracell reubicada/renombrada.
+- Es un negocio nuevo, sin relación con la franquicia original, que no está en la base de 270.
+
+**Pendiente decidir con Ricardo**: ¿se agrega "Acumuladores LEO" como candidato nuevo a la base (con su propio CASE ID), o se espera a la revisión en persona del equipo?
 
 ## Otros hallazgos
 
