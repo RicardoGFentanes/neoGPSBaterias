@@ -20,9 +20,9 @@ Validar 270 negocios candidatos a vender baterías para automóvil (fuente: `NEG
 
 ## Estado actual
 
-- [ ] Estructura de repo y git creada
-- [ ] Columnas nuevas agregadas al Excel (CASE ID + columnas de validación)
-- [ ] API key de Google Maps configurada
-- [ ] Primeros 10 CASE ID validados y revisados con el equipo
-- [ ] Pipeline aplicado al resto de la base (270 negocios)
-- [ ] Repo compartido en GitHub (`RicardoGFentanes/neoGPSBaterias`)
+- [x] Estructura de repo y git creada
+- [x] Columnas nuevas agregadas al Excel (CASE ID + columnas de validación)
+- [x] API key de Google Maps configurada
+- [x] Primeros 10 CASE ID validados — pendiente revisar con Ricardo (ver [[Revision Primeros 10]])
+- [ ] Pipeline aplicado al resto de la base (260 negocios restantes)
+- [x] Repo compartido en GitHub (`RicardoGFentanes/neoGPSBaterias`)

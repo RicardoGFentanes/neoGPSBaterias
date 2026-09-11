@@ -1,0 +1,102 @@
+[
+  {
+    "case_id": 1,
+    "vende_baterias": "SI",
+    "nombre_fachada": "ACUMULADORES NEZA LIMITED",
+    "marcas": "LTH, AMERICA, OPTIMA",
+    "mostrador": "SI",
+    "evidencia": "Fachada con letrero 'ACUMULADORES NEZA LIMITED' y 'COMPRAMOS BATERIAS USADAS'; logos LTH/America Racing/Optima; anaquel con baterias apiladas visible a la izquierda del local.",
+    "fotos": "streetview_1.jpg",
+    "validado_por": "Claude"
+  },
+  {
+    "case_id": 2,
+    "vende_baterias": "SI",
+    "nombre_fachada": "NOVA AUTOPARTES / CENTRO DE SERVICIO BATERIAS GONHER",
+    "marcas": "GONHER",
+    "mostrador": "SI",
+    "evidencia": "Street View bloqueado por arboles. Foto del propietario en Maps muestra letrero 'CENTRO DE SERVICIO BATERIAS GONHER', toldo/banner GONHER, logo 'Pro One' (franquicia de refaccionaria, no es marca de bateria), y anaquel con baterias visible.",
+    "fotos": "streetview_1.jpg, maps_foto_1.jpg",
+    "validado_por": "Claude"
+  },
+  {
+    "case_id": 3,
+    "vende_baterias": "SI",
+    "nombre_fachada": "RALY ACUMULADORES",
+    "marcas": "LTH, AMERICA, FULL POWER, GONHER",
+    "mostrador": "SI",
+    "evidencia": "Letrero 'Raly Acumuladores' y 'Pro One' (franquicia). Torre publicitaria grande con logos LTH/America Racing/Full Power/Gonher. Mostrador de tienda visible con productos.",
+    "fotos": "streetview_1.jpg",
+    "validado_por": "Claude"
+  },
+  {
+    "case_id": 4,
+    "vende_baterias": "SI",
+    "nombre_fachada": "ACUMULADORES NEZA LIMITED",
+    "marcas": "LTH, AMERICA",
+    "mostrador": "SI",
+    "evidencia": "Letrero coincide 'Acumuladores Neza Limited'. Logos LTH y America en fachada, pequeno aparador con productos visible.",
+    "fotos": "streetview_1.jpg",
+    "validado_por": "Claude"
+  },
+  {
+    "case_id": 5,
+    "vende_baterias": "SI",
+    "nombre_fachada": "ENERGYCENTRO",
+    "marcas": "LTH, AMERICA",
+    "mostrador": "NO",
+    "evidencia": "Letrero 'ENERGYCENTRO' con logos LTH y America Racing, rotulo adicional (parcialmente cubierto por publicidad) que menciona 'BATERIAS'. No se aprecia mostrador interior desde la fachada (cortina de seguridad cerrada).",
+    "fotos": "streetview_1.jpg",
+    "validado_por": "Claude"
+  },
+  {
+    "case_id": 6,
+    "vende_baterias": "PENDIENTE",
+    "nombre_fachada": "SERVICIO PENA (reparacion de puertas corredizas / cerrajeria)",
+    "marcas": "",
+    "mostrador": "NO",
+    "evidencia": "Street View y foto de Maps muestran un taller de cerrajeria/reparacion de puertas corredizas, chapas y elevadores; el interior es un taller de herramientas. Se observa un aparato que podria ser un cargador de bateria y un objeto rojo que podria ser una bateria aislada, pero no hay anuncio ni mostrador claro de venta de baterias. Requiere confirmacion adicional (revisar resenas o visita).",
+    "fotos": "streetview_1.jpg, maps_foto_1.jpg",
+    "validado_por": "Claude"
+  },
+  {
+    "case_id": 7,
+    "vende_baterias": "SI",
+    "nombre_fachada": "ACUMULADORES MIRANDA",
+    "marcas": "LTH",
+    "mostrador": "SI",
+    "evidencia": "Street View muestra fachada residencial con vista parcial obstruida. Foto de Maps confirma letrero 'ESPECIALISTAS EN BATERIAS iNO PAGUES MAS!', toldo de 'Miranda Acumuladores', rack con baterias junto a motocicletas, logo LTH, y foto de una bateria individual.",
+    "fotos": "streetview_1.jpg, maps_foto_1.jpg",
+    "validado_por": "Claude"
+  },
+  {
+    "case_id": 8,
+    "vende_baterias": "SI",
+    "nombre_fachada": "ACUMULADORES MIRANDA",
+    "marcas": "LTH",
+    "mostrador": "SI",
+    "evidencia": "Street View bloqueado por un camion de carga. Foto de Maps (segunda sucursal) muestra gran cantidad de baterias apiladas en anaqueles bajo banner 'LTH - la nueva linea de baterias', rotulo 'Acumuladores Miranda'.",
+    "fotos": "streetview_1.jpg, maps_foto_1.jpg",
+    "validado_por": "Claude"
+  },
+  {
+    "case_id": 9,
+    "vende_baterias": "SI",
+    "nombre_fachada": "ACUMULADORES NEZAHUALCOYOTL",
+    "marcas": "",
+    "mostrador": "SI",
+    "evidencia": "Street View muestra cortina de seguridad cerrada sin letrero visible. Foto de Maps muestra letrero azul 'BATERIAS' y 'RAPIDA Y LENTA' (servicio de carga), anaquel interior con baterias apiladas (rojas y negras). Marca no legible con claridad en la foto.",
+    "fotos": "streetview_1.jpg, maps_foto_1.jpg",
+    "validado_por": "Claude"
+  },
+  {
+    "case_id": 10,
+    "vende_baterias": "SI",
+    "nombre_fachada": "BATERIAS PARA AUTOS SAMAR",
+    "marcas": "DURACELL, LTH, OPTIMA",
+    "mostrador": "NO",
+    "evidencia": "Letrero 'SAMAR' con ilustracion de bateria, banner 'DURACELL BATERIAS PARA AUTO', logos LTH y OPTIMA en cortina de seguridad. Cortina cerrada, no se aprecia mostrador interior.",
+    "fotos": "streetview_1.jpg",
+    "validado_por": "Claude"
+  }
+]
