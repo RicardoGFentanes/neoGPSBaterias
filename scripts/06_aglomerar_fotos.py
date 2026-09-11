@@ -23,9 +23,12 @@ Uso:
 """
 import re
 import shutil
+import sys
 from pathlib import Path
 
 import openpyxl
+
+sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 ROOT = Path(__file__).resolve().parent.parent
 MASTER_PATH = ROOT / "NEGOCIOS_BATERIAS_ARAÑAS.xlsx"

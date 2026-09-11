@@ -16,10 +16,13 @@ agregado observaciones que se quieran preservar).
 Uso:
     python scripts/04_generar_excel_revision.py
 """
+import sys
 from pathlib import Path
 
 import openpyxl
 from openpyxl.styles import Alignment, Font, PatternFill
+
+sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 ROOT = Path(__file__).resolve().parent.parent
 MASTER_PATH = ROOT / "NEGOCIOS_BATERIAS_ARAÑAS.xlsx"

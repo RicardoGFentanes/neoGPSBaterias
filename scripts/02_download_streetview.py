@@ -26,6 +26,11 @@ from pathlib import Path
 import openpyxl
 import requests
 
+# Algunos nombres de negocio traen emoji/caracteres que la consola de Windows
+# (cp1252) no puede imprimir -- sin esto, un print() con esos caracteres
+# tumba el script a medias (paso el 2026-09-11 en el CASE ID 41).
+sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+
 ROOT = Path(__file__).resolve().parent.parent
 EXCEL_PATH = ROOT / "NEGOCIOS_BATERIAS_ARAÑAS.xlsx"
 SHEET_NAME = "ar_neg"

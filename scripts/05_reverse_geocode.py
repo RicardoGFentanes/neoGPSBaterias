@@ -20,6 +20,8 @@ from pathlib import Path
 import openpyxl
 import requests
 
+sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+
 ROOT = Path(__file__).resolve().parent.parent
 EXCEL_PATH = ROOT / "NEGOCIOS_BATERIAS_ARAÑAS.xlsx"
 SHEET_NAME = "ar_neg"
