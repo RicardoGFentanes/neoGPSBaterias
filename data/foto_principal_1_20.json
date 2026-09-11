@@ -1,0 +1,22 @@
+[
+  {"case_id": 1, "foto_principal": "streetview_1.jpg"},
+  {"case_id": 2, "foto_principal": "ejemplo_foto_street_view.png"},
+  {"case_id": 3, "foto_principal": "streetview_1.jpg"},
+  {"case_id": 4, "foto_principal": "ejemplo_foto_final.png"},
+  {"case_id": 5, "foto_principal": "streetview_1.jpg"},
+  {"case_id": 6, "foto_principal": "streetview_1.jpg"},
+  {"case_id": 7, "foto_principal": "foto_ejemplo.png"},
+  {"case_id": 8, "foto_principal": "maps_foto_1.jpg"},
+  {"case_id": 9, "foto_principal": "maps_foto_1.jpg"},
+  {"case_id": 10, "foto_principal": "streetview_2.jpg"},
+  {"case_id": 11, "foto_principal": "streetview_2.jpg"},
+  {"case_id": 12, "foto_principal": "maps_foto_1.jpg"},
+  {"case_id": 13, "foto_principal": "streetview_2.jpg"},
+  {"case_id": 14, "foto_principal": "streetview_1.jpg"},
+  {"case_id": 15, "foto_principal": "streetview_1.jpg"},
+  {"case_id": 16, "foto_principal": "maps_foto_1.jpg"},
+  {"case_id": 17, "foto_principal": "streetview_1.jpg"},
+  {"case_id": 18, "foto_principal": "streetview_2.jpg"},
+  {"case_id": 19, "foto_principal": "streetview_2.jpg"},
+  {"case_id": 20, "foto_principal": "streetview_2.jpg"}
+]

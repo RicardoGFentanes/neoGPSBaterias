@@ -14,6 +14,9 @@ Formato esperado del JSON (lista de objetos):
     "mostrador": "SI",                    # SI / NO
     "evidencia": "Mostrador con ~8 baterias visibles, logo LTH en fachada",
     "fotos": "streetview_1.jpg",
+    "foto_principal": "streetview_1.jpg",  # opcional: cual de las fotos en "fotos"
+                                            # muestra mejor la evidencia (nombre,
+                                            # logos, baterias). La usa 06_aglomerar_fotos.py.
     "validado_por": "Claude"
   },
   ...
@@ -40,8 +43,18 @@ FIELD_TO_COLUMN = {
     "mostrador": "BATERIAS EN MOSTRADOR",
     "evidencia": "EVIDENCIA",
     "fotos": "FOTOS ARCHIVO",
+    "foto_principal": "FOTO PRINCIPAL",
     "validado_por": "VALIDADO POR",
 }
+
+
+def ensure_columns_exist(ws, headers):
+    """Agrega al final cualquier columna de FIELD_TO_COLUMN que aun no exista."""
+    for col_name in FIELD_TO_COLUMN.values():
+        if col_name not in headers:
+            ws.cell(row=1, column=ws.max_column + 1, value=col_name)
+            headers.append(col_name)
+    return headers
 
 
 def main():
@@ -55,11 +68,14 @@ def main():
     wb = openpyxl.load_workbook(EXCEL_PATH)
     ws = wb[SHEET_NAME]
     headers = [c.value for c in ws[1]]
-    col = {h: i + 1 for i, h in enumerate(headers)}
+    col_check = {h: i + 1 for i, h in enumerate(headers)}
 
-    if "CASE ID" not in col:
+    if "CASE ID" not in col_check:
         print("No existe la columna CASE ID. Corre primero scripts/01_add_columns.py")
         sys.exit(1)
+
+    headers = ensure_columns_exist(ws, headers)
+    col = {h: i + 1 for i, h in enumerate(headers)}
 
     row_by_case_id = {}
     for row in range(2, ws.max_row + 1):

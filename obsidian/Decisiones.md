@@ -2,6 +2,14 @@
 
 Bitácora de decisiones de diseño del pipeline. Cada entrada: fecha, decisión, por qué.
 
+## 2026-09-11 — Calidad de foto: zoom + contexto, y columna FOTO PRINCIPAL
+
+- **Ricardo pidió asegurar que en las fotos de Street View se noten las baterías, los logos y el nombre del local.** `scripts/02_download_streetview.py` ahora descarga DOS tomas por negocio: `streetview_1.jpg` (fov=50, zoom) y `streetview_2.jpg` (fov=90, contexto).
+- **El heading automático de la Static API no es estable entre llamadas** (se recalcula cada vez y a veces apunta a otro punto/negocio vecino) — por eso NO se puede asumir que el zoom (fov=50) siempre es mejor que el contexto (fov=90). Hay que comparar ambas y elegir a mano.
+- **Se agregó la columna `FOTO PRINCIPAL`** al Excel maestro: la elección explícita, por CASE ID, de cuál foto (de las que sea) muestra mejor la evidencia. `06_aglomerar_fotos.py` la usa como primera prioridad para el aglomerado, antes que el heurístico ejemplo→streetview→maps_foto.
+- **Gotcha de sincronización**: `FOTO PRINCIPAL` (como `OBSERVACIONES` y `VENDE BATERIAS`) es un campo "humano" que `04_generar_excel_revision.py` sincroniza desde `VALIDACION_NEGOCIOS_BATERIAS.xlsx` hacia el maestro ANTES de regenerar. Si se edita el maestro directamente (por script o a mano) sin también actualizar el archivo de revisión, la siguiente corrida de `04` puede **revertir el cambio** con el valor viejo del archivo de revisión. Pasó con CASE ID 13 el 2026-09-11. Regla: si se edita `FOTO PRINCIPAL`/`VENDE BATERIAS`/`OBSERVACIONES` directamente en el maestro, actualizar tambien esa misma celda en `VALIDACION_NEGOCIOS_BATERIAS.xlsx` antes de correr `04`, o hacerlo únicamente desde el archivo de revisión.
+- Se re-revisaron las 20 fotos zoom nuevas contra las de contexto; en varios casos (10, 13, 18) el contexto (fov=90) resultó mejor que el zoom. En otros (1, 3, 14, 15, 17) el zoom fue claramente mejor. Se documentó explícitamente cada elección en `FOTO PRINCIPAL`.
+
 ## 2026-09-11 — Correcciones de Ricardo (lote 1-10) + criterio ampliado
 
 - **CASE ID 6 confirmado como NO** por Ricardo (taller de cerrajería, no vende baterías) — corrección aplicada directamente en `VALIDACION_NEGOCIOS_BATERIAS.xlsx` y sincronizada al maestro.

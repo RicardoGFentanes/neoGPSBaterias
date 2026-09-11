@@ -40,6 +40,7 @@ REVIEW_COLUMNS = [
     "BATERIAS EN MOSTRADOR",
     "EVIDENCIA",
     "FOTOS ARCHIVO",
+    "FOTO PRINCIPAL",
     "OBSERVACIONES",
     "FECHA VALIDACION",
 ]
@@ -48,7 +49,7 @@ COLUMN_WIDTHS = {
     "CASE ID": 8, "NOMBRE NEGOCIO": 28, "DIRECCION": 36, "LAT": 11, "LONG": 11,
     "LINK": 16, "VENDE BATERIAS": 14, "NOMBRE FACHADA DETECTADO": 28,
     "MARCAS LOGOS DETECTADOS": 22, "BATERIAS EN MOSTRADOR": 16,
-    "EVIDENCIA": 50, "FOTOS ARCHIVO": 34, "OBSERVACIONES": 40, "FECHA VALIDACION": 14,
+    "EVIDENCIA": 50, "FOTOS ARCHIVO": 34, "FOTO PRINCIPAL": 20, "OBSERVACIONES": 40, "FECHA VALIDACION": 14,
 }
 WRAP_COLUMNS = {"EVIDENCIA", "OBSERVACIONES", "DIRECCION", "FOTOS ARCHIVO"}
 
@@ -64,7 +65,7 @@ def ensure_observaciones_column(ws, headers):
 
 # Campos que el equipo puede corregir a mano en el Excel de revision; una
 # correccion humana ahi siempre gana sobre el valor que tenga el maestro.
-HUMAN_EDITABLE_FIELDS = ["OBSERVACIONES", "VENDE BATERIAS"]
+HUMAN_EDITABLE_FIELDS = ["OBSERVACIONES", "VENDE BATERIAS", "FOTO PRINCIPAL"]
 
 
 def sync_human_edits_from_review(ws_master, col_master):
@@ -173,6 +174,7 @@ def main():
             "BATERIAS EN MOSTRADOR": ws_master.cell(row=row, column=col_master["BATERIAS EN MOSTRADOR"]).value,
             "EVIDENCIA": evidencia,
             "FOTOS ARCHIVO": find_photo_paths(case_id, fotos_raw),
+            "FOTO PRINCIPAL": ws_master.cell(row=row, column=col_master["FOTO PRINCIPAL"]).value if "FOTO PRINCIPAL" in col_master else None,
             "OBSERVACIONES": ws_master.cell(row=row, column=col_master["OBSERVACIONES"]).value,
             "FECHA VALIDACION": ws_master.cell(row=row, column=col_master["FECHA VALIDACION"]).value,
         }

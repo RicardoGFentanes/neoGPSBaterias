@@ -7,10 +7,16 @@ La carpeta fotos/ con sus subcarpetas por negocio se conserva intacta; esto
 solo agrega una vista plana adicional para compartir/revisar rapido.
 
 Prioridad de la foto representativa dentro de cada subcarpeta:
-  1. Cualquier archivo que el equipo haya dejado a mano como ejemplo/foto final
+  1. La columna "FOTO PRINCIPAL" del Excel maestro, si esta llena -- es la
+     eleccion explicita de quien valido el negocio (deberia ser siempre la que
+     mas claramente muestre nombre/logos/baterias; ver skill validar-negocio-baterias).
+  2. Cualquier archivo que el equipo haya dejado a mano como ejemplo/foto final
      (nombre contiene "ejemplo" o "final") -- se asume que es la mejor toma.
-  2. streetview_1.jpg (o el primer streetview_*.jpg que exista).
-  3. maps_foto_1.jpg (o el primer maps_foto_*.jpg que exista).
+  3. streetview_1.jpg (o el primer streetview_*.jpg que exista) -- ADVERTENCIA:
+     esto es solo un ultimo recurso; el heading automatico de la Static API no
+     siempre apunta bien, asi que sin "FOTO PRINCIPAL" explicita esto puede
+     elegir una foto que no muestre la evidencia con claridad.
+  4. maps_foto_1.jpg (o el primer maps_foto_*.jpg que exista).
 
 Uso:
     python scripts/06_aglomerar_fotos.py
@@ -36,10 +42,14 @@ def sanitize_name(name: str) -> str:
     return "_".join(words) or "Negocio"
 
 
-def pick_representative_photo(folder: Path):
+def pick_representative_photo(folder: Path, foto_principal: str = None):
     files = [f for f in folder.iterdir() if f.is_file() and f.suffix.lower() in (".jpg", ".jpeg", ".png")]
     if not files:
         return None
+    if foto_principal:
+        for f in files:
+            if f.name.strip().lower() == str(foto_principal).strip().lower():
+                return f
     for f in files:
         if any(marker in f.stem.lower() for marker in PRIORITY_MARKERS):
             return f
@@ -69,12 +79,13 @@ def main():
             continue  # solo negocios ya validados
 
         nombre = ws.cell(row=row, column=nombre_col).value or "negocio"
+        foto_principal = ws.cell(row=row, column=col["FOTO PRINCIPAL"]).value if "FOTO PRINCIPAL" in col else None
         matches = sorted(FOTOS_DIR.glob(f"{int(case_id):03d}_*"))
         if not matches:
             missing.append(case_id)
             continue
 
-        photo = pick_representative_photo(matches[0])
+        photo = pick_representative_photo(matches[0], foto_principal)
         if photo is None:
             missing.append(case_id)
             continue

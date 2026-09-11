@@ -2,8 +2,17 @@
 
 ## Carpetas de fotos
 
-- **`fotos/`** — una subcarpeta por negocio (`<CASE ID en 3 digitos>_<slug>/`), con todas las fotos de ese negocio (`streetview_1.jpg`, `maps_foto_N.jpg`, o archivos `ejemplo_*` que el equipo deje a mano como referencia de la mejor toma). Esta carpeta **no se reorganiza ni se borra**.
-- **`fotos_aglomeradas/`** — carpeta adicional, generada por `scripts/06_aglomerar_fotos.py`, con **una foto representativa por negocio ya validado**, copiada (no movida) y renombrada como `<CASE ID>_Nombre_Del_Negocio.<ext>` (ej. `12_Baterías_Para_Carro_La_Primera.jpg`). Se regenera cada vez que se corre el script — prioriza archivos `ejemplo`/`final` dejados a mano, luego `streetview_1.jpg`, luego `maps_foto_1.jpg`.
+- **`fotos/`** — una subcarpeta por negocio (`<CASE ID en 3 digitos>_<slug>/`), con todas las fotos de ese negocio:
+  - `streetview_1.jpg` — Street View Static API con **fov=50** (zoom, para que se note de cerca nombre/logos/baterías).
+  - `streetview_2.jpg` — Street View Static API con **fov=90** (contexto/calle completa, por si el zoom corta la fachada).
+  - `maps_foto_N.jpg` — fotos rescatadas de la ficha de Maps (propietario/clientes) cuando ninguna de las dos de arriba muestra bien la evidencia.
+  - `ejemplo_*` / `foto_ejemplo*` — archivos que el equipo deja a mano como la mejor toma; siempre tienen prioridad.
+  Esta carpeta **no se reorganiza ni se borra**.
+- **`fotos_aglomeradas/`** — carpeta adicional, generada por `scripts/06_aglomerar_fotos.py`, con **una foto representativa por negocio ya validado**, copiada (no movida) y renombrada como `<CASE ID>_Nombre_Del_Negocio.<ext>` (ej. `12_Baterías_Para_Carro_La_Primera.jpg`). Se regenera cada vez que se corre el script — usa la columna `FOTO PRINCIPAL` del maestro (ver abajo) y solo si esta vacía cae al heuristico ejemplo→streetview_1→maps_foto_1.
+
+### Regla de calidad de foto (pedido explícito de Ricardo)
+
+Cada foto principal debe dejar ver con claridad: **el nombre del negocio en la fachada, los logos de marca, y las baterías** (mostrador, anaquel, o producto). El fov=50 (zoom) suele lograrlo, pero el heading automático de la Static API a veces varía entre llamadas y termina apuntando a otro lado — **siempre comparar streetview_1 (zoom) contra streetview_2 (contexto) y elegir la que mejor muestre la evidencia**, sin asumir que el zoom siempre gana. Si ninguna de las dos sirve, usar la galería de Maps ("Street View y 360°" / "Del propietario") o incluso una foto de producto (ej. CASE ID 13: una foto de las baterías en el anaquel, más útil que la fachada parcialmente cortada). Sea cual sea la elegida, se anota explícitamente en la columna `FOTO PRINCIPAL` — no dejar que el aglomerado la adivine.
 
 Dos archivos Excel viven en el proyecto:
 
@@ -38,6 +47,7 @@ Dos archivos Excel viven en el proyecto:
 | BATERIAS EN MOSTRADOR | `03_update_validation.py` | SI/NO — si se ve un mostrador/exhibidor con baterías de auto físicas. |
 | EVIDENCIA | `03_update_validation.py` | Texto libre con el razonamiento de Claude: qué se vio exactamente y por qué se concluyó el veredicto. |
 | FOTOS ARCHIVO | `03_update_validation.py` | Nombres de archivo de las fotos descargadas para este CASE ID, en `fotos/<CASE ID>_<slug>/`. |
+| FOTO PRINCIPAL | `03_update_validation.py` | Cuál de las fotos en FOTOS ARCHIVO es la mejor evidencia (nombre/logos/baterías notorios) — la usa `06_aglomerar_fotos.py` para elegir qué copiar al aglomerado. Editable a mano en el Excel de revisión (ver [[Decisiones]] sobre el orden de sincronización). |
 | FECHA VALIDACION | `03_update_validation.py` | Fecha en que se hizo la validación. |
 | VALIDADO POR | `03_update_validation.py` | Quién/qué validó (ej. "Claude"). |
 | OBSERVACIONES | `04_generar_excel_revision.py` | **Columna para el equipo** (ver abajo). |
