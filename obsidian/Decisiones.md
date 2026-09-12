@@ -2,6 +2,15 @@
 
 Bitácora de decisiones de diseño del pipeline. Cada entrada: fecha, decisión, por qué.
 
+## 2026-09-12 — Regla más estricta: el veredicto SI exige evidencia FOTOGRÁFICA, no solo texto
+
+- **Ricardo instruyó explícitamente**: "LAS QUE DICEN SI VENDE BATERIA... SI DE PLANO NO HAY NADA QUE EVIDENCIE QUE VENDE BATERIAS EN LAS FOTOS CAMBIALO A NO", y aclaró el matiz: "O EN LA FACHADA SE VE CERRADO, PERO HAY MARCA DE BATERIA ENTONCES SI VENDE" — es decir, una cortina cerrada NO descalifica si hay un logo/marca de batería visible en la foto; lo que sí descalifica es que NO haya absolutamente ninguna evidencia visual (ni nombre en fachada, ni logo/marca, ni producto en mostrador, ni foto de Maps) y el veredicto se sostenga solo en reseñas de texto, categoría de Maps, o "mismo teléfono/domicilio" sin ninguna foto de respaldo.
+- **Esto reemplaza la regla anterior** ("si no hay foto pero sí evidencia en reseñas de texto, cuenta como confirmación", aplicada a CASE ID 11 y 12 en el lote 11-20) — las reseñas de texto YA NO son suficientes por sí solas para un veredicto SI.
+- **Se revisaron los 219 SI existentes y se identificaron 7 casos sin ninguna evidencia fotográfica real**, corregidos a NO: CASE ID **11** (Baterías "El Güero"), **73** (Baterias SR Santiago Apostol), **76** (Acomuladores Gutiérrez), **122** (Acumuladores Insurgentes), **134** (Acumuladores Nascar — el rótulo visible decía "Daytona", no coincide y sin marca de respaldo), **147** (Baterías de gel Bolaños), **184** (bateriasadomicilio24hrs.com.mx).
+- **Casos revisados y confirmados que SÍ tienen evidencia fotográfica real (se quedan en SI)**: CASE ID 39 (foto de batería física Duralast + material promocional de marca), CASE ID 187 (rótulo "DISTRIBUIDOR LTH" + batería LTH pintada + vitrina de producto, junto al pin exacto aunque el nombre no coincida), y todos los casos donde el nombre de fachada coincide (aunque no haya foto de producto) o donde una ficha de Maps de la MISMA dirección/teléfono (no una ficha vecina distinta) sí tiene fotos propias de producto.
+- **Conteo actualizado tras esta corrección: 213 SI / 35 NO / 22 PENDIENTE** (antes: 219 SI / 27 NO / 24 PENDIENTE).
+- Nota: durante esta corrección se detectó que el Excel de revisión ya tenía ediciones manuales sin comentario en CASE ID 23 (→ NO) y CASE ID 34 (→ SI) — se sincronizaron al maestro como corresponde (edición humana en el archivo de revisión siempre gana), asumiendo que son decisiones de Ricardo tomadas directamente en el Excel.
+
 ## 2026-09-12 — Base completa: 270/270 CASE ID validados
 
 - **Ricardo pidió terminar la base completa** ("termina la base (250 caseids)") tras el cierre de CASE ID 1-20. Se validaron los 250 CASE ID restantes (21-270) en lotes de 10, usando el mismo criterio ya acordado con Ricardo (regla del PIN exacto, "Cerrado temporalmente" no descalifica, revisar galería completa de Maps, no inventar nada).
