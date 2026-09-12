@@ -4,40 +4,40 @@ Cierre de la validación completa de los 270 negocios de `NEGOCIOS_BATERIAS_ARA�
 
 ## Resultado global (270/270)
 
-- **SI: 219**
-- **NO: 27**
-- **PENDIENTE: 24**
+- **SI: 214**
+- **NO: 56**
+- **PENDIENTE: 0** — eliminado por instrucción explícita de Ricardo (2026-09-12): "SOLO ES SI O NO CON BASE EN LAS REGLAS QUE YA SE ESTABLECIERON". Los 22 casos que habían quedado en PENDIENTE se resolvieron aplicando estrictamente las reglas ya vigentes (regla del PIN exacto + exigencia de evidencia fotográfica real) sobre la evidencia ya recopilada, sin inventar evidencia nueva. Ver [[Decisiones]] para el detalle de cada resolución.
 
-## CASE ID que quedaron en PENDIENTE (para revisión en equipo)
+## Los 22 CASE ID que estaban en PENDIENTE, ahora resueltos
 
-Igual que CASE ID 18/19/20 en el primer lote, estos casos no tienen evidencia suficiente para un veredicto confiable — no se forzó SI ni NO.
+| CASE ID | Negocio | Veredicto final | Motivo |
+|---|---|---|---|
+| 23 | Sanchez Espino Maria Del Rocio | NO | Vista bloqueada por vegetación; sin fachada comercial visible |
+| 34 | Baterías Osonix | SI | (editado a mano por Ricardo en el Excel de revisión) |
+| 52 | Centro de Servicio LTH Santa Catarina | NO | Sin ninguna foto que muestre rótulo, logo o producto |
+| 54 | Carga de Baterías Corte de Placa | NO | Foto de Maps muestra piezas de bicicleta; reseñas hablan de soldadura, no baterías |
+| 57 | Refaccionaria Super Diesel Carrera | NO | Galería completa muestra refaccionaria diesel (aceites/filtros), sin batería ni logo |
+| 91 | Energizer Supply Chain México | NO | Centro de distribución/logística, no punto de venta al público |
+| 171 | Bodega Acumuladores Tauro | NO | Cortina cerrada, sin rótulo ni logo visible en ninguna foto |
+| 176 | Sistemas Inteligentes e Instrumentación Electrónica | NO | Fachada residencial, sin ningún indicio comercial |
+| 177 | LTH | **SI** | Logo de marca LTH visible en el mostrador junto a producto Bardahl |
+| 180 | Baterías El Oferton Sucursal Tlalpizahuac | NO | Muro residencial con grafiti, sin rótulo ni producto |
+| 183 | Centro de Servicio Gonher | NO | Street View muestra tienda de materiales de construcción; ficha de Maps sin fotos propias |
+| 207 | Acumuladores Guzmán | NO | Local cerrado/en remodelación, sin rótulo ni producto visible |
+| 211 | Acumuladores Galgo | NO | Street View muestra abarrotes "ISRADAV"; solo reseñas de texto sin foto de respaldo |
+| 213 | Baterías UVAN Ermita | NO | Street View muestra depósito de cerveza "RAMIREZ"; solo reseñas de texto |
+| 219 | Baterías Duracell | NO | Street View muestra fachada residencial (mural religioso) |
+| 225 | Auto Pro | NO | Street View muestra "LONA IMPRESA"; reseñas no mencionan baterías |
+| 228 | Acumuladores "CORA" | NO | Portón cerrado; ficha de Maps sin reseñas ni fotos |
+| 231 | Acumuladores-Chamapa | NO | Únicas 2 fotos disponibles no muestran rótulo, logo ni producto |
+| 243 | Duracell Av.Mexicas | NO | Street View muestra local de reparación de celulares (AT&T) |
+| 249 | Xbatt | NO | Sin fachada visible; "Cerrado temporalmente"; sin fotos de Maps |
+| 250 | Baterías Conservicioa Domicilio | NO | Muro liso / cafetería vecina; sin fotos de Maps |
+| 257 | Baterías Trojan México | NO | Solo mural de agradecimiento en la barda, sin local visible |
+| 258 | Baterías Durcell | NO | Cortina con grafiti, sin rótulo ni foto de Maps |
+| 268 | UCCE | NO | Solo letrero "UCCE" (sin relación textual a baterías), sin producto visible |
 
-| CASE ID | Negocio | Motivo resumido |
-|---|---|---|
-| 23 | Sanchez Espino Maria Del Rocio | Vista bloqueada por vegetación; sin fachada comercial visible |
-| 34 | Baterías Osonix | Coordenadas muestran calle lejana sin negocio identificable |
-| 52 | Centro de Servicio LTH Santa Catarina | Ambas tomas bloqueadas por camión/árboles |
-| 54 | Carga de Baterías Corte de Placa | Solo barda y portón, sin rótulo |
-| 57 | Refaccionaria Super Diesel Carrera | Nombre coincide pero Street View no confirma producto |
-| 91 | Energizer Supply Chain México | Solo portón/caseta de vigilancia industrial |
-| 171 | Bodega Acumuladores Tauro | Cortina cerrada, sin rótulo; navegador falló al complementar con Maps |
-| 176 | Sistemas Inteligentes e Instrumentación Electrónica | Fachada residencial; navegador falló al complementar con Maps |
-| 177 | LTH | Rótulo dice "Carga de Baterías" (servicio), no venta clara |
-| 180 | Baterías El Oferton Sucursal Tlalpizahuac | Muro con grafiti, sin rótulo; pin posiblemente desplazado a gasolinera vecina |
-| 183 | Centro de Servicio Gonher | Street View muestra tienda de materiales de construcción |
-| 207 | Acumuladores Guzmán | Local cerrado/en remodelación; navegador falló al complementar |
-| 211 | Acumuladores Galgo | Street View muestra abarrotes "ISRADAV"; ficha de Maps sí existe con la dirección |
-| 213 | Baterías UVAN Ermita | Street View muestra depósito de cerveza "RAMIREZ" |
-| 219 | Baterías Duracell | Street View muestra fachada residencial (mural religioso) |
-| 225 | Auto Pro | Street View muestra "LONA IMPRESA" sin relación |
-| 228 | Acumuladores "CORA" | Portón cerrado; ficha de Maps sin reseñas ni fotos |
-| 231 | Acumuladores-Chamapa | Único par de fotos disponibles no muestra producto ni rótulo |
-| 243 | Duracell Av.Mexicas | Street View muestra local de reparación de celulares |
-| 249 | Xbatt | Dirección es oficina piso 4; Maps "Cerrado temporalmente", sin fotos |
-| 250 | Baterías Conservicioa Domicilio | Dirección "Local B"; Street View muestra muro liso / cafetería vecina |
-| 257 | Baterías Trojan México | Solo mural de agradecimiento en la barda, sin local visible |
-| 258 | Baterías Durcell | Cortina con grafiti, sin rótulo; navegador falló al complementar |
-| 268 | UCCE | Solo letrero pequeño "UCCE" en bodega industrial, sin producto visible |
+Nota: CASE ID 23 y 34 fueron editados directamente por Ricardo en `VALIDACION_NEGOCIOS_BATERIAS.xlsx` (sin comentario) antes de esta resolución — se respetaron esos valores tal cual.
 
 ## Casos límite ya resueltos (aceptados como SI vía ficha de Maps con misma dirección/teléfono)
 

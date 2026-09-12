@@ -2,6 +2,13 @@
 
 Bitácora de decisiones de diseño del pipeline. Cada entrada: fecha, decisión, por qué.
 
+## 2026-09-12 — Se elimina PENDIENTE: todo caso se resuelve SI o NO
+
+- **Ricardo instruyó explícitamente**: "VEO QUE HAY VARIOS PENDIENTES, ELIMINA ESA OPCION, SOLO ES SI O NO CON BASE EN LAS REGLAS QUE YA SE ESTABLECIERON" — ya no existe un tercer estado; cada CASE ID debe resolverse a SI o NO aplicando las reglas ya vigentes (regla del PIN exacto, evidencia fotográfica real, "Cerrado temporalmente" no descalifica por sí solo) sobre la evidencia YA recopilada, sin salir a buscar evidencia nueva ni inventar nada.
+- **Se resolvieron los 22 CASE ID que quedaban en PENDIENTE**: 21 a NO (sin ninguna evidencia fotográfica real de venta de baterías — ni nombre, ni logo, ni producto, ni foto de Maps que lo respalde) y 1 a SI (CASE ID 177 "LTH": logo de marca LTH visible en el mostrador junto a producto Bardahl, aunque no se distingan unidades físicas con nitidez). Detalle completo en [[Revision 21-270 - Base Completa]].
+- **Conteo final: 214 SI / 56 NO / 0 PENDIENTE** (270/270 resueltos).
+- **PENDIENTE deja de ser un veredicto válido en este proyecto** de aquí en adelante — cualquier validación futura (negocios nuevos que se agreguen a la base) debe resolverse a SI/NO con las mismas reglas, no dejarse abierta.
+
 ## 2026-09-12 — Regla más estricta: el veredicto SI exige evidencia FOTOGRÁFICA, no solo texto
 
 - **Ricardo instruyó explícitamente**: "LAS QUE DICEN SI VENDE BATERIA... SI DE PLANO NO HAY NADA QUE EVIDENCIE QUE VENDE BATERIAS EN LAS FOTOS CAMBIALO A NO", y aclaró el matiz: "O EN LA FACHADA SE VE CERRADO, PERO HAY MARCA DE BATERIA ENTONCES SI VENDE" — es decir, una cortina cerrada NO descalifica si hay un logo/marca de batería visible en la foto; lo que sí descalifica es que NO haya absolutamente ninguna evidencia visual (ni nombre en fachada, ni logo/marca, ni producto en mostrador, ni foto de Maps) y el veredicto se sostenga solo en reseñas de texto, categoría de Maps, o "mismo teléfono/domicilio" sin ninguna foto de respaldo.

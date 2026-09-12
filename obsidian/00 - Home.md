@@ -31,6 +31,7 @@ Validar 270 negocios candidatos a vender baterías para automóvil (fuente: `NEG
 - [x] Columna `BATERIAS VISIBLES EN FOTOS MAPS` agregada
 - [ ] Decidir si "Acumuladores LEO" (posible negocio nuevo cerca de CASE ID 20) se agrega a la base
 - [x] Pipeline aplicado al resto de la base (250 negocios restantes) — **base completa: 270/270 CASE ID validados**
-- [x] Regla de evidencia fotográfica endurecida (2026-09-12): 7 SI sin ninguna foto de respaldo corregidos a NO. Conteo actual: **213 SI / 35 NO / 22 PENDIENTE**
+- [x] Regla de evidencia fotográfica endurecida (2026-09-12): 7 SI sin ninguna foto de respaldo corregidos a NO
+- [x] PENDIENTE eliminado como veredicto (2026-09-12): los 22 casos restantes se resolvieron SI/NO. **Conteo final: 214 SI / 56 NO / 0 PENDIENTE**
 - [x] Repo compartido en GitHub (`RicardoGFentanes/neoGPSBaterias`)
 - [ ] Revisión en equipo de los 24 CASE ID que quedaron en PENDIENTE (ver [[Revision 21-270 - Base Completa]])
