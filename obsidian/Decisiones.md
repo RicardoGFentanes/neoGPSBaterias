@@ -2,6 +2,16 @@
 
 Bitácora de decisiones de diseño del pipeline. Cada entrada: fecha, decisión, por qué.
 
+## 2026-09-12 — Base completa: 270/270 CASE ID validados
+
+- **Ricardo pidió terminar la base completa** ("termina la base (250 caseids)") tras el cierre de CASE ID 1-20. Se validaron los 250 CASE ID restantes (21-270) en lotes de 10, usando el mismo criterio ya acordado con Ricardo (regla del PIN exacto, "Cerrado temporalmente" no descalifica, revisar galería completa de Maps, no inventar nada).
+- **Resultado final: 219 SI / 27 NO / 24 PENDIENTE** sobre 270 fichas.
+- **24 casos quedaron en PENDIENTE** por evidencia genuinamente insuficiente (Street View bloqueado por vehículos/vegetación/portones cerrados, sin fotos adicionales en Maps, o mismatch de nombre en el pin sin resolver) — ver detalle en [[Revision 21-270 - Base Completa]]. Igual que con CASE ID 18/19/20, estos quedan para revisión en equipo, no se forzó un veredicto.
+- **Se reafirmó la regla del PIN exacto en varios casos límite** (p.ej. CASE ID 133-140, 162-163, 191-200, 211-247): cuando el Street View del pin exacto no mostraba el negocio pero la ficha de Maps con la MISMA dirección/teléfono sí tenía fotos propias que probaban el giro, se aceptó esa evidencia (es la ficha correcta, solo que el Street View por defecto capturó el vecino) — a diferencia de "pedir prestada" evidencia de una ficha de Maps distinta (que sigue prohibido, ver regla de CASE ID 20 abajo).
+- **Posibles duplicados de ubicación (distancia por haversine) detectados y documentados, no fusionados**: CASE ID 2/15 y CASE ID 214/260 están muy cerca físicamente pero corresponden a nombres de negocio distintos en el Excel — se dejaron como fichas independientes con nota cruzada, sin combinarlas ni eliminar ninguna sin instrucción explícita.
+- **Contención del navegador entre agentes concurrentes**: al correr muchos lotes en paralelo, el panel de Maps compartido a veces mostraba la ficha de OTRO negocio que un agente distinto estaba visitando al mismo tiempo. Cada agente verificaba nombre/dirección contra el Excel antes de confiar en el contenido, y tras 2-3 reintentos fallidos se documentaba como `LIMITACION` (solo evidencia de Street View) en vez de insistir indefinidamente.
+- Se regeneró `VALIDACION_NEGOCIOS_BATERIAS.xlsx` y `fotos_aglomeradas/` (270 fotos) para reflejar la base completa; commit y push final a `RicardoGFentanes/neoGPSBaterias`.
+
 ## 2026-09-11 — La foto principal debe probar visualmente la venta de baterías
 
 - **Ricardo pidió que la foto del aglomerado siempre pruebe visualmente que el negocio vende baterías** — señaló específicamente que `19_Venta_De_Baterias_De_Carros.jpg` (antes: Street View de una gasolinera) no servía como prueba.
